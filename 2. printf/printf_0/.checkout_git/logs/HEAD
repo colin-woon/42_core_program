@@ -1,0 +1,12 @@
+0000000000000000000000000000000000000000 123acb097d5f60e4133a96f2c81b346b0a106007 Colin Woon <cwoon@u81z02s02.42kl.edu.my> 1719823376 +0800	commit (initial): Standby Makefile and done alphabet functions
+123acb097d5f60e4133a96f2c81b346b0a106007 7ca4938e59208130567a2512aa176e95ea180090 Colin Woon <cwoon@u81z02s02.42kl.edu.my> 1719834282 +0800	commit: Completed base 10 functions
+7ca4938e59208130567a2512aa176e95ea180090 4581970a7a2fed6b5107d4cd81230a035abe2c13 Colin Woon <cwoon@u81z02s02.42kl.edu.my> 1719840846 +0800	commit: Change file names
+4581970a7a2fed6b5107d4cd81230a035abe2c13 4dfab1c7344a4b4b9b269e892af446c74340dab6 Colin Woon <cwoon@u82z02s01.42kl.edu.my> 1719914278 +0800	commit: Completed Mandatory formats
+4dfab1c7344a4b4b9b269e892af446c74340dab6 f1cefc1aba1d7441add11457f4719223272eefc2 Colin Woon <cwoon@u82z02s01.42kl.edu.my> 1719918391 +0800	commit: Completed Makefile
+f1cefc1aba1d7441add11457f4719223272eefc2 15877b839708c776f61ac49c4f3173d09afe95bd Colin Woon <cwoon@u80z04s02.42kl.edu.my> 1720431610 +0800	commit: Fixed Mandatory Part
+15877b839708c776f61ac49c4f3173d09afe95bd 9d8b9c04627fb45c3e74cf528ced4ac22e384d22 Colin Woon <cwoon@u80z04s02.42kl.edu.my> 1720433116 +0800	commit: Removed all comments
+9d8b9c04627fb45c3e74cf528ced4ac22e384d22 95f75de079c894a02cbb305b9bf20d1209e040fd Colin Woon <cwoon@u81z09s06.42kl.edu.my> 1722310029 +0800	commit: Corrected norm errors
+95f75de079c894a02cbb305b9bf20d1209e040fd ec6f587b5ea765cae6a61008c705600e179c998e Colin Woon <cwoon@u81z09s06.42kl.edu.my> 1722310117 +0800	commit: Corrected norm errors 2
+ec6f587b5ea765cae6a61008c705600e179c998e ec6f587b5ea765cae6a61008c705600e179c998e Colin Woon <cwoon@u81z09s06.42kl.edu.my> 1722310174 +0800	reset: moving to HEAD
+ec6f587b5ea765cae6a61008c705600e179c998e ec6f587b5ea765cae6a61008c705600e179c998e Colin Woon <cwoon@u81z09s06.42kl.edu.my> 1722311589 +0800	reset: moving to HEAD
+ec6f587b5ea765cae6a61008c705600e179c998e ec6f587b5ea765cae6a61008c705600e179c998e Colin Woon <cwoon@u81z09s06.42kl.edu.my> 1722315410 +0800	reset: moving to HEAD
