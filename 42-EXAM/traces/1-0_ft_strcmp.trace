@@ -1,0 +1,7 @@
+----------------8<-------------[ START TEST 
+        💻 TEST
+./a.out "hello World" "hello world"         🔎 YOUR OUTPUT:
+ft_strcmp("hello World", "hello world") = -1$
+        🗝 EXPECTED OUTPUT:
+ft_strcmp("hello World", "hello world") = -32$
+----------------8<------------- END TEST ]
