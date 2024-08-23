@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwoon <cwoon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 18:44:45 by cwoon             #+#    #+#             */
-/*   Updated: 2024/06/10 19:08:05 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 /*
 NAME
     ft_putchar_fd -- write character c on a specified file descriptor

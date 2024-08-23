@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwoon <cwoon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:12:08 by cwoon             #+#    #+#             */
-/*   Updated: 2024/06/10 19:04:47 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 /*
 Parses the C-string `str` interpreting its content as an integral number,
 which is returned as a value of type int

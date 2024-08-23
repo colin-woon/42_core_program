@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:55:40 by cwoon             #+#    #+#             */
-/*   Updated: 2024/07/30 11:27:46 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:28:37 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../include/ft_printf.h"
 
 static int	printf_format(va_list argp, const char specifier)
 {

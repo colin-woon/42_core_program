@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwoon <cwoon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:50:48 by cwoon             #+#    #+#             */
-/*   Updated: 2024/06/10 19:07:56 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 /*
 Fill a block of memory with a particular value. Memory set.
 Input: Generic pointer `s`, any integer `c`, memory size in bytes `n`

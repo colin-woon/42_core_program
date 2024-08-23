@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 10:10:06 by cwoon             #+#    #+#             */
-/*   Updated: 2024/06/12 17:53:48 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 /*
 Concatenate strings together while safely null terminating the result.
 Input	: Destination string `*dest`, source string `*src`,

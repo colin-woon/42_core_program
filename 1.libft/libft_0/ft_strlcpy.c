@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:33:11 by cwoon             #+#    #+#             */
-/*   Updated: 2024/06/19 12:29:49 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 /*
 Copies string from one source to another with the option to limit the copy while
 safely null-terminating the destination buffer

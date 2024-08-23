@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "libft.h"
+#include "../../include/libft.h"
 #include <string.h>
 #include <fcntl.h>
 #include <limits.h>

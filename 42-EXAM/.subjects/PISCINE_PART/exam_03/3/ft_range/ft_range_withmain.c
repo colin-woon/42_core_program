@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_range_withmain.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 16:58:33 by angavrel          #+#    #+#             */
-/*   Updated: 2016/11/30 16:58:39 by angavrel         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 
 /*
 ** replace #include libft.h with #include <stdlib.h>
