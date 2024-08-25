@@ -6,12 +6,23 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:43:09 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/26 01:08:07 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 /*
+NAME
+    memchr -- locate byte in byte string
+SYNOPSIS
+    void *memchr(const void *s, int c, size_t n);
+DESCRIPTION
+    the memchr() function locates the first occurence of c
+	(convered to an unsigned char) in string s.
+RETURN VALUES
+    The memchr() function returns a pointer to the byte located,
+	or NULL if no such byte exists within n bytes.
+
 Locates a specified character in a string with a limited search option
 Input	:String `*src`, character to find `c` (integer promotion applied),
 		range of comparison `n`

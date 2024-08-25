@@ -1,29 +1,78 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_input.c                                   :+:      :+:    :+:   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:12:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/23 20:30:17 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/26 01:34:40 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error_exit(void);
+int 	*convert_and_validate(int argc, char **argv);
+void	process_argument(char *arg, int *numbers, int *size);
 bool	is_valid_number(const char *str);
 bool	has_duplicates(int *numbers, int size);
-void	process_argument(char *arg, int *numbers, int *size);
-int		*convert_and_validate(int argc, char **argv, int *size);
-int		*validate_input(int argc, char **argv);
 
-// Function to print "Error\n" and exit the program
-void error_exit(void)
+// Function to convert the arguments to an array of integers and validate them
+int *convert_and_validate(int argc, char **argv)
 {
-	ft_printf("Error\n");
-	exit(EXIT_FAILURE);
+	int *numbers;
+	int i;
+	int	size;
+
+	numbers = malloc(sizeof(int) * (argc - 1));
+	if (!numbers)
+	{
+		ft_putendl_fd("Error", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	size = 0;
+	i = 1;
+	while (i < argc)
+	{
+		process_argument(argv[i], numbers, &size);
+		i++;
+	}
+	if (has_duplicates(numbers, size))
+	{
+		free(numbers);
+		ft_putendl_fd("Error", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	return numbers;
+}
+
+// Function to split arguments and validate them
+void process_argument(char *arg, int *numbers, int *size)
+{
+	char **arg_parts;
+	int j;
+
+	arg_parts = ft_split(arg, ' ');
+	if (!arg_parts)
+	{
+		ft_putendl_fd("Error", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	j = 0;
+	while (arg_parts[j])
+	{
+		if (!is_valid_number(arg_parts[j]))
+		{
+			free(arg_parts);
+			free(numbers);
+			ft_putendl_fd("Error", STDERR_FILENO);
+			exit(EXIT_FAILURE);
+		}
+		numbers[*size] = ft_atoi(arg_parts[j]);
+		(*size)++;
+		j++;
+	}
+	free(arg_parts);
 }
 
 // Function to check if a string represents a valid integer
@@ -56,6 +105,7 @@ bool is_valid_number(const char *str)
 	return true;
 }
 
+
 // Function to check for duplicates in an array of integers
 bool has_duplicates(int *numbers, int size)
 {
@@ -75,63 +125,4 @@ bool has_duplicates(int *numbers, int size)
 		i++;
 	}
 	return false;
-}
-
-// Function to split arguments and validate them
-void process_argument(char *arg, int *numbers, int *size)
-{
-	char **arg_parts;
-	int j;
-
-	arg_parts = ft_split(arg, ' ');
-	if (!arg_parts)
-		error_exit();
-	j = 0;
-	while (arg_parts[j])
-	{
-		if (!is_valid_number(arg_parts[j]))
-		{
-			free(arg_parts);
-			free(numbers);
-			error_exit();
-		}
-		numbers[*size] = ft_atoi(arg_parts[j]);
-		(*size)++;
-		j++;
-	}
-	free(arg_parts);
-}
-
-// Function to convert the arguments to an array of integers and validate them
-int *convert_and_validate(int argc, char **argv, int *size)
-{
-	int *numbers;
-	int i;
-
-	numbers = malloc(sizeof(int) * (argc - 1));
-	if (!numbers)
-		error_exit();
-	*size = 0;
-	i = 1;
-	while (i < argc)
-	{
-		process_argument(argv[i], numbers, size);
-		i++;
-	}
-	if (has_duplicates(numbers, *size))
-	{
-		free(numbers);
-		error_exit();
-	}
-	return numbers;
-}
-
-// Main validation function
-int *validate_input(int argc, char **argv)
-{
-	int size;
-	int *numbers;
-
-	numbers = convert_and_validate(argc, argv, &size);
-	return (numbers);
 }

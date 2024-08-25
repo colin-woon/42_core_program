@@ -10,7 +10,7 @@
 #define COLOR_RESET "\033[0m"
 
 // Function declarations
-void validate_input(int argc, char **argv);
+void convert_and_validate(int argc, char **argv);
 void run_test_case(int argc, char **argv, const char *expected_result);
 
 // Main function to run all test cases
@@ -91,15 +91,15 @@ int main(void)
     return 0;
 }
 
-// Assuming validate_input() exits on error, we capture that in our test function
+// Assuming convert_and_validate() exits on error, we capture that in our test function
 void run_test_case(int argc, char **argv, const char *expected_result)
 {
     printf("Running test case: %s\n", expected_result);
     int result = 0;  // 0 for success, 1 for error
 
-    // Since validate_input might exit, you can catch the output using system or conditional checks
+    // Since convert_and_validate might exit, you can catch the output using system or conditional checks
     if (fork() == 0) {
-        validate_input(argc, argv);  // This will exit if there's an error
+        convert_and_validate(argc, argv);  // This will exit if there's an error
         exit(0);  // Exit with success if no error
     } else {
         int status;

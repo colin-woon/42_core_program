@@ -6,12 +6,28 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:31:31 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/26 01:09:06 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 /*
+NAME
+    memcmp -- compare byte string
+SYNOPSIS
+    int memcmp(const void *s1, const void *s2, size_t n)
+DESCRIPTION
+    The memcmp() function compares byte string s1 against byte string s2.
+    Both strings are assumed to be n bytes long.
+RETURN VALUES
+    The memcmp() function returns zero if the two strings are identical,
+	otherwise returns the difference betwee the first two differing bytes
+	(treated as unsigned char values,
+	so that '\200' is greater than '\0', for example).
+    Zero-length strings are always identical.
+	This behaviour is not required by C
+	and portable code should only depend on the sign of the returned value.
+
 Compares the first num bytes of the block of memory pointed by `s1` to the
 first num bytes pointed by `s2`, returning zero if they all match or a value
 different from zero representing which is greater if they do not.
