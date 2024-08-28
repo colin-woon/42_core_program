@@ -1,0 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_data.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
+/*   Updated: 2024/08/29 00:34:32 by cwoon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	data_error(t_push_swap *data);
+void	free_data(t_push_swap *data);
+void	initialize_data(t_push_swap *data, int ac,char **av,bool write_mode);
+void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
+void	fill_stack(t_push_swap *data, t_stack *stack, \
+int stack_size, char **digits);
+
+void	initialize_data(t_push_swap *data, int ac,char **av,bool write_mode)
+{
+	int	stack_size;
+	char **digits;
+
+	stack_size = --ac;
+	digits = ++av;
+	initialize_stack(data, &data->stack_a, stack_size);
+	initialize_stack(data, &data->stack_b, stack_size);
+	fill_stack(data, &data->stack_a, stack_size, digits);
+	data->write_mode = true;
+	data->operations_list = NULL;
+}
+
+void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size)
+{
+	int	buffer_size;
+
+	buffer_size = sizeof(int) * stack_size;
+	stack->buffer = malloc(buffer_size);
+	if (stack->buffer == NULL)
+		return data_error(data);
+	stack->i_top = 0;
+	stack->i_bottom = 0;
+	stack->size = stack_size;
+	ft_memset(stack->buffer, 0, buffer_size);
+}
+
+void	fill_stack(t_push_swap *data, t_stack *stack, \
+int stack_size, char **digits)
+{
+	int	*numbers;
+	int	i;
+
+	i = 0;
+	numbers = malloc(sizeof(int) * stack_size);
+	if (numbers == NULL)
+		data_error(data);
+	while(digits[i])
+	{
+		if (validate_numbers(digits[i]) == false)
+			data_error(data);
+		numbers[i] = ft_atoi(digits[i]);
+		i++;
+	}
+	finding_duplicates(data, numbers, stack_size);
+	ranking_numbers(numbers, stack->buffer, stack_size);
+	stack->i_bottom = stack_size - 1;
+	free(numbers);
+}
+
+void	data_error(t_push_swap *data)
+{
+	free_data(data);
+	ft_putendl_fd("Error", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+void	free_data(t_push_swap *data)
+{
+	if (data->stack_a.buffer)
+		free(data->stack_a.buffer);
+	if (data->stack_b.buffer)
+		free(data->stack_b.buffer);
+	if (data->operations_list)
+		ft_lstclear(&data->operations_list, NULL);
+}
