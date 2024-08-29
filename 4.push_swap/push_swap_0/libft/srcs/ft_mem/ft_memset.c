@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:50:48 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 /*
 Fill a block of memory with a particular value. Memory set.
 Input: Generic pointer `s`, any integer `c`, memory size in bytes `n`

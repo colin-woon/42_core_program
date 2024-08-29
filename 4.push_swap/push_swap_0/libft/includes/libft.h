@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:38:46 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/26 20:58:44 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 19:34:15 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *src, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+void	ft_free_2d_array(char **array);
 
 int		ft_toupper(int c);
 int		ft_tolower(int c);

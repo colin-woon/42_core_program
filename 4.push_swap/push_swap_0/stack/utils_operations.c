@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:55:38 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/26 20:56:41 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 18:38:16 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void		print_operations(t_list *head)
 {
 	t_list *operations;
 
+	operations = head;
 	while (operations)
 	{
 		ft_printf("%s\n", op_to_string(op_from(operations)));

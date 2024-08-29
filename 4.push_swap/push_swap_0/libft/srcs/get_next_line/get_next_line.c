@@ -1,5 +1,5 @@
-#include "../../include/get_next_line.h"
-#include "../../include/libft.h"
+#include "get_next_line.h"
+#include "libft.h"
 
 char	*process_line(char **stash)
 {

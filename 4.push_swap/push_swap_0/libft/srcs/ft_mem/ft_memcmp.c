@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:31:31 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/26 01:09:06 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 /*
 NAME
     memcmp -- compare byte string

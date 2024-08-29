@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:42:16 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 /*
 Copies a memory block from a source address to a destination address.
 Input	:destination memory block pointer `*dest`, source memory block `*src`,

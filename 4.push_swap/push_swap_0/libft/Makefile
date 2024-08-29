@@ -6,11 +6,11 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:32 by cwoon             #+#    #+#              #
-#    Updated: 2024/08/23 18:48:36 by cwoon            ###   ########.fr        #
+#    Updated: 2024/08/29 19:31:25 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-INC				= include/
+INC				= includes/
 SRC_DIR			= srcs/
 OBJ_DIR			= obj/
 
@@ -26,7 +26,8 @@ FTMEM_DIR		=	$(SRC_DIR)ft_mem/ft_bzero.c \
 					$(SRC_DIR)ft_mem/ft_memchr.c \
 					$(SRC_DIR)ft_mem/ft_memcmp.c \
 					$(SRC_DIR)ft_mem/ft_memmove.c \
-					$(SRC_DIR)ft_mem/ft_memset.c
+					$(SRC_DIR)ft_mem/ft_memset.c \
+					$(SRC_DIR)ft_mem/ft_free_2d_array.c
 
 FTPUT_DIR		=	$(SRC_DIR)ft_put_fd/ft_putchar_fd.c \
 					$(SRC_DIR)ft_put_fd/ft_putendl_fd.c \

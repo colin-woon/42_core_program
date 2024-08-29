@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:54:35 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/23 18:27:35 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 17:26:39 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 /*
 Checks for alphabets and numbers
 Input: ASCII code digit

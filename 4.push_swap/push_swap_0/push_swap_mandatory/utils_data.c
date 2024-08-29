@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 00:34:32 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 22:03:10 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,30 @@ void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
 void	fill_stack(t_push_swap *data, t_stack *stack, \
 int stack_size, char **digits);
 
-void	initialize_data(t_push_swap *data, int ac,char **av,bool write_mode)
+void	initialize_data(t_push_swap *data, int ac,char **av, bool write_mode)
 {
 	int	stack_size;
 	char **digits;
 
-	stack_size = --ac;
-	digits = ++av;
+	if (ac == 2)
+	{
+		digits = ft_split(av[1], ' ');
+		stack_size = 0;
+		while (digits[stack_size])
+			stack_size++;
+	}
+	else
+	{
+		stack_size = ac - 1;
+		digits = ++av;
+	}
 	initialize_stack(data, &data->stack_a, stack_size);
 	initialize_stack(data, &data->stack_b, stack_size);
 	fill_stack(data, &data->stack_a, stack_size, digits);
-	data->write_mode = true;
+	data->write_mode = write_mode;
 	data->operations_list = NULL;
+	if (ac == 2)
+		ft_free_2d_array(digits);
 }
 
 void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size)

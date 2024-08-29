@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 09:13:27 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/26 22:45:48 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 18:02:27 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	swap(t_stack *stack)
 	int	temp;
 
 	if (stack->buffer[get_index_down(stack, stack->i_top)] == 0)
-		return;
+		return ;
 	temp = stack->buffer[get_index_down(stack, stack->i_top)];
 	stack->buffer[get_index_down(stack, stack->i_top)] =  stack->buffer[stack->i_top];
 	stack->buffer[stack->i_top] = temp;

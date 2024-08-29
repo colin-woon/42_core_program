@@ -6,11 +6,11 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:30:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/23 18:28:37 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 17:28:50 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_print_hexa(unsigned int dec_nbr, char specifier)
 {

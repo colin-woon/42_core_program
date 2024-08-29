@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 21:09:08 by ugerkens          #+#    #+#             */
-/*   Updated: 2024/08/29 00:31:34 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 18:37:32 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 bool	validate_numbers(char *digits);
 void	finding_duplicates(t_push_swap *data, int *numbers, int stack_size);
 void	ranking_numbers(int *numbers, int *stack_a, int size);
+bool	is_sorted(t_push_swap *data);
 
 bool	validate_numbers(char *digits)
 {
@@ -59,7 +60,7 @@ void	finding_duplicates(t_push_swap *data, int *numbers, int stack_size)
 			if (numbers[i] == numbers[j])
 			{
 				free(numbers);
-				error(data);
+				data_error(data);
 			}
 			j++;
 		}
@@ -67,7 +68,7 @@ void	finding_duplicates(t_push_swap *data, int *numbers, int stack_size)
 	}
 }
 
-// Ranks numbers in ascending order
+// Ascending order, Rank increases when number is larger than others
 void	ranking_numbers(int *numbers, int *stack_a, int size)
 {
 	int	i;
@@ -80,12 +81,29 @@ void	ranking_numbers(int *numbers, int *stack_a, int size)
 		compare_i = 0;
 		rank = 0;
 		while (compare_i < size)
-			if (numbers[compare_i++] <= numbers[i])
-			{
+		{
+			if (numbers[compare_i] <= numbers[i])
 				rank++;
-				compare_i++;
-			}
+			compare_i++;
+		}
 		stack_a[i] = rank;
 		i++;
 	}
+}
+
+bool	is_sorted(t_push_swap *data)
+{
+	int	i;
+	int	rank;
+
+	i = data->stack_a.i_top;
+	rank = 1;
+	while (rank <= data->stack_a.size)
+	{
+		if (data->stack_a.buffer[i] != rank)
+			return (false);
+		rank++;
+		i = get_index_down(&data->stack_a, i);
+	}
+	return (true);
 }

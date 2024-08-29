@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:12:49 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 00:37:58 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/08/29 17:37:37 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 #include <limits.h>
 #include <stdbool.h>
 #include <errno.h>
-#include "../libft/include/libft.h"
-#include "../libft/include/ft_printf.h"
+#include "libft.h"
 #include "stack.h"
+#include <stdio.h>
 
+typedef struct circular_buffer_stack t_stack;
 typedef struct s_push_swap
 {
   t_stack stack_a;
@@ -40,5 +41,11 @@ int stack_size, char **digits);
 bool	validate_numbers(char *digits);
 void	finding_duplicates(t_push_swap *data, int *numbers, int stack_size);
 void	ranking_numbers(int *numbers, int *stack_a, int size);
+bool	is_sorted(t_push_swap *data);
+
+// Sort Basic
+void	sort(t_push_swap *data);
+void	sort_three_basic(t_push_swap *data);
+void	sort_five(t_push_swap *data);
 
 #endif
