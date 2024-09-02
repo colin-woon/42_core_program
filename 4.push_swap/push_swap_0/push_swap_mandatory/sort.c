@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:05:12 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/30 18:02:37 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/02 21:22:52 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	sort(t_push_swap *data)
 {
 	if (data->stack_a.size <= 1 || is_sorted(data))
 		return ;
-	else if (data->stack_a.size == 2)
-		sort_two(data);
+	// else if (data->stack_a.size == 2)
+	// 	sort_two(data);
 	else if (data->stack_a.size == 3)
 		sort_three_basic(data);
-	else if (data->stack_a.size == 4)
-		sort_four(data);
+	// else if (data->stack_a.size == 4)
+	// 	sort_four(data);
 	else if (data->stack_a.size == 5)
 		sort_five(data);
-	// else
-	// 	three_way_quick_sort(data);
+	else
+		three_way_quick_sort(data);
 	// post_sort_optimization(data);
 }
 

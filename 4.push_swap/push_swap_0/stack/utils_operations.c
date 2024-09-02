@@ -6,18 +6,18 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:55:38 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 18:38:16 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/02 16:42:50 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-void		save_operation(t_push_swap *data, operations op);
-operations	op_from(t_list *node);
-const char	*op_to_string(operations op);
+void		save_operation(t_push_swap *data, t_operations op);
+t_operations	op_from(t_list *node);
+const char	*op_to_string(t_operations op);
 void		print_operations(t_list *head);
 
-void		save_operation(t_push_swap *data, operations op)
+void		save_operation(t_push_swap *data, t_operations op)
 {
 	t_list	*new_op;
 
@@ -26,11 +26,11 @@ void		save_operation(t_push_swap *data, operations op)
 		data_error(data);
 	ft_lstadd_back(&data->operations_list , new_op);
 }
-operations	op_from(t_list *node)
+t_operations	op_from(t_list *node)
 {
-	return ((operations) (uintptr_t) node->content);
+	return ((t_operations) (uintptr_t) node->content);
 }
-const char	*op_to_string(operations op)
+const char	*op_to_string(t_operations op)
 {
 	static const char	*strings[12];
 

@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/08/29 17:56:57 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/02 18:52:33 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,10 @@ STACK_FILES 	=	stack/operations_1_swap.c \
 					stack/utils_stack.c
 
 PUSH_SWAP_FILES	=	push_swap_mandatory/main.c \
+					push_swap_mandatory/operations_chunk.c \
 					push_swap_mandatory/sort.c \
+					push_swap_mandatory/three_way_quick_sort.c \
+					push_swap_mandatory/utils_chunk.c \
 					push_swap_mandatory/utils_data.c \
 					push_swap_mandatory/utils_validate.c
 

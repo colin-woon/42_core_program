@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:38:46 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 19:34:15 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/02 14:06:54 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <unistd.h>
 # include <string.h>
 # include <limits.h>
+# include <stdbool.h>
+# include <errno.h>
+# include <stdint.h>
+#include <stdio.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
 

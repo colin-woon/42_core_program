@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:42:29 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 17:31:08 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/02 16:42:50 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define STACK_H
 
 # include "libft.h"
-# include <stdbool.h>
-# include <stdint.h>
 
 typedef struct s_push_swap t_push_swap;
 typedef struct circular_buffer_stack
@@ -42,7 +40,7 @@ typedef enum	stack_operations
 	sa,
 	sb,
 	ss
-}	operations;
+}	t_operations;
 
 // Utils Stack
 int			get_current_size(t_stack *stack);
@@ -52,9 +50,9 @@ int			get_index_down(t_stack *stack, int index);
 int			get_stack_value(t_stack *stack, int nth_value);
 
 // Utils Operations
-void		save_operation(t_push_swap *data, operations op);
-operations	op_from(t_list *node);
-const char	*op_to_string(operations op);
+void		save_operation(t_push_swap *data, t_operations op);
+t_operations	op_from(t_list *node);
+const char	*op_to_string(t_operations op);
 void		print_operations(t_list *head);
 
 // Stack ADT Operations
