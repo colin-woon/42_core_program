@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:12:49 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/02 18:48:21 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/03 17:25:53 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,10 @@ void	set_pivots (t_split_dest *dest ,\
 t_area current_area, int split_size, int *pivot_upper, int *pivot_lower);
 int		get_chunk_value(t_push_swap *data, t_area current_area, int n, \
 bool is_finding_max);
-t_stack *get_stack_at(t_push_swap *data, t_area current_area);
+t_stack	*get_stack_at(t_push_swap *data, t_area current_area);
 
 // Operations Chunk
 int		move_from_to(t_push_swap *data, t_area from, t_area to);
-
 
 // Sort Basic
 void	sort(t_push_swap *data);
@@ -78,5 +77,7 @@ void	sort_five(t_push_swap *data);
 
 // Three-way Quick Sort
 void	three_way_quick_sort(t_push_swap *data);
+
+void	post_sort_optimization(t_push_swap *data);
 
 #endif

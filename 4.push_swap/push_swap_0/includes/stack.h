@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:42:29 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/02 16:42:50 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 00:46:18 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ t_operations	op_from(t_list *node);
 const char	*op_to_string(t_operations op);
 void		print_operations(t_list *head);
 
+// Utils Optimization
+t_operations	get_double_operation(t_operations now_op, t_operations next_op);
+bool			is_useless_operations(t_operations now_op, t_operations next_op);
+bool			is_valid_list(t_list *optimized);
+void			save_optimized_operation(t_list **optimized, t_operations optimized_op);
 // Stack ADT Operations
 // Swap
 void		swap_a(t_push_swap *data);

@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/02 18:52:33 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/04 01:07:33 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #------------------------------------------------------------------------------#
 
 .PHONY: all bonus clean fclean re
-# .SILENT
+.SILENT:
 
 #------------------------------------------------------------------------------#
 #                                VARIABLES                                     #
@@ -50,15 +50,17 @@ STACK_FILES 	=	stack/operations_1_swap.c \
 					stack/operations_3_rotate.c \
 					stack/operations_4_reverse_rotate.c \
 					stack/utils_operations.c \
+					stack/utils_optimization.c \
 					stack/utils_stack.c
 
 PUSH_SWAP_FILES	=	push_swap_mandatory/main.c \
 					push_swap_mandatory/operations_chunk.c \
+					push_swap_mandatory/post_sort_optimization.c \
 					push_swap_mandatory/sort.c \
 					push_swap_mandatory/three_way_quick_sort.c \
 					push_swap_mandatory/utils_chunk.c \
 					push_swap_mandatory/utils_data.c \
-					push_swap_mandatory/utils_validate.c
+					push_swap_mandatory/utils_validate.c \
 
 MANDATORY_FILES	=	$(STACK_FILES) $(PUSH_SWAP_FILES)
 MANDATORY_OBJS	=	$(patsubst %.c, $(OBJS_DIR)%.o, $(MANDATORY_FILES))
@@ -83,13 +85,18 @@ $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)$(STACK_DIR)
 	mkdir -p $(OBJS_DIR)$(PUSH_SWAP_DIR)
 
+remake_libft:
+	make re -C $(LIBFT_DIR)
+
 # Removes objects
 clean:
 	$(RM) $(OBJS_DIR)
+	make clean -C $(LIBFT_DIR)
 
 # Removes objects and executables
 fclean: clean
 	$(RM) $(NAME)
+	make fclean -C $(LIBFT_DIR)
 
 # Removes objects and executables and remakes
 re: fclean all

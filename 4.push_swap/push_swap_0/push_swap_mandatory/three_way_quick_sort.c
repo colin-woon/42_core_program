@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:01:53 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/02 21:15:15 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/03 11:36:40 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	three_way_quick_sort(t_push_swap *data);
 void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort);
 void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest);
-void	sort_one(t_push_swap *data, t_chunk *chunk_to_sort);
+void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort);
+void	sort_two_chunk(t_push_swap *data, t_chunk *chunk_to_sort);
 
 void	three_way_quick_sort(t_push_swap *data)
 {
@@ -30,9 +31,18 @@ void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort)
 {
 	t_split_dest	dest;
 
-	if (chunk_to_sort->size <= 1)
+	if (chunk_to_sort->area == BOTTOM_B \
+	&& get_current_size(&data->stack_b) == chunk_to_sort->size)
+		chunk_to_sort->area = TOP_B;
+	else if (chunk_to_sort->area == BOTTOM_A \
+	&& get_current_size(&data->stack_a) == chunk_to_sort->size)
+		chunk_to_sort->area = TOP_A;
+	if (chunk_to_sort->size <= 2)
 	{
-		sort_one(data, chunk_to_sort);
+		if (chunk_to_sort->size == 2)
+			sort_two_chunk(data, chunk_to_sort);
+		if (chunk_to_sort->size == 1)
+			sort_one_chunk(data, chunk_to_sort);
 		return ;
 	}
 	split_chunk(data, chunk_to_sort, &dest);
@@ -55,16 +65,9 @@ void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 	max_value = get_chunk_value(data, chunk->area, chunk->size, true);
 	upper_threshold = max_value - pivot_lower;
 	lower_threshold = max_value - pivot_upper;
-	// ft_printf("%d\n", dest->max);
-	// ft_printf("%d\n", dest->mid);
-	// ft_printf("%d\n", dest->min);
-	// ft_printf("%d\n", data->write_mode);
 	while(chunk->size--)
 	{
 		next_value = get_chunk_value(data, chunk->area, 1, false);
-		// 	ft_printf("max_value: %d\n", max_value);
-		// ft_printf("pivot_upper: %d\n", pivot_lower);
-		// ft_printf("next_value: %d\n", next_value);
 		if (next_value > upper_threshold)
 			dest->max.size += move_from_to(data, chunk->area, dest->max.area);
 		else if (next_value > lower_threshold)
@@ -74,11 +77,30 @@ void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 	}
 }
 
-void	sort_one(t_push_swap *data, t_chunk *chunk_to_sort)
+void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
 {
 	if(chunk_to_sort->area == BOTTOM_A \
 	|| chunk_to_sort->area == BOTTOM_B \
 	|| chunk_to_sort->area == TOP_B)
 		move_from_to(data, chunk_to_sort->area, TOP_A);
 	chunk_to_sort->size -= 1;
+}
+
+void	sort_two_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
+{
+	int	top;
+	int	btm;
+
+	if (chunk_to_sort->area == BOTTOM_A \
+	|| chunk_to_sort->area == BOTTOM_B \
+	|| chunk_to_sort->area == TOP_B)
+	{
+			move_from_to(data, chunk_to_sort->area, TOP_A);
+			move_from_to(data, chunk_to_sort->area, TOP_A);
+	}
+	top = get_stack_value(&data->stack_a, 1);
+	btm = get_stack_value(&data->stack_a, 2);
+	if (top > btm)
+		swap_a(data);
+	chunk_to_sort->size -= 2;
 }
