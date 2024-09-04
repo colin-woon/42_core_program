@@ -6,30 +6,33 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:55:38 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/03 18:18:23 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:42:31 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "push_swap.h"
 
-void		save_operation(t_push_swap *data, t_operations op);
+void			save_operation(t_push_swap *data, t_operations op);
 t_operations	op_from(t_list *node);
-const char	*op_to_string(t_operations op);
-void		print_operations(t_list *head);
+const char		*op_to_string(t_operations op);
+void			print_operations(t_list *head);
 
-void		save_operation(t_push_swap *data, t_operations op)
+void	save_operation(t_push_swap *data, t_operations op)
 {
 	t_list	*new_op;
 
 	new_op = ft_lstnew((void *)(uintptr_t) op);
 	if (new_op == NULL)
 		data_error(data);
-	ft_lstadd_back(&data->operations_list , new_op);
+	ft_lstadd_back(&data->operations_list, new_op);
 }
+
 t_operations	op_from(t_list *node)
 {
-	return ((t_operations) (uintptr_t) node->content);
+	return ((t_operations)(uintptr_t) node->content);
 }
+
 const char	*op_to_string(t_operations op)
 {
 	static const char	*strings[12];
@@ -48,9 +51,10 @@ const char	*op_to_string(t_operations op)
 	strings[11] = "ss";
 	return (strings[op]);
 }
-void		print_operations(t_list *head)
+
+void	print_operations(t_list *head)
 {
-	t_list *operations;
+	t_list	*operations;
 
 	operations = head;
 	while (operations)

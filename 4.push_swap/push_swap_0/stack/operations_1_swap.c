@@ -6,11 +6,12 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 09:13:27 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 18:02:27 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:41:51 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "push_swap.h"
 
 void		swap(t_stack *stack);
 void		swap_a(t_push_swap *data);
@@ -24,7 +25,8 @@ void	swap(t_stack *stack)
 	if (stack->buffer[get_index_down(stack, stack->i_top)] == 0)
 		return ;
 	temp = stack->buffer[get_index_down(stack, stack->i_top)];
-	stack->buffer[get_index_down(stack, stack->i_top)] =  stack->buffer[stack->i_top];
+	stack->buffer[get_index_down(stack, stack->i_top)] \
+	= stack->buffer[stack->i_top];
 	stack->buffer[stack->i_top] = temp;
 }
 

@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:05:12 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 00:55:13 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:57:04 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sort_three(t_push_swap *data)
 {
 	int	top;
 	int	mid;
-	int btm;
+	int	btm;
 
 	top = get_stack_value(&data->stack_a, 1);
 	mid = get_stack_value(&data->stack_a, 2);
@@ -58,15 +58,15 @@ void	sort_three(t_push_swap *data)
 
 void	sort_five(t_push_swap *data)
 {
-	int first_a;
+	int	first_a;
 	int	first_b;
 	int	second_b;
 
 	first_a = 0;
-	while(get_current_size(&data->stack_a) > 3)
+	while (get_current_size(&data->stack_a) > 3)
 	{
 		first_a = get_stack_value(&data->stack_a, 1);
-		if(first_a == 1 || first_a == 2)
+		if (first_a == 1 || first_a == 2)
 			push_b(data);
 		else
 			rotate_a(data);

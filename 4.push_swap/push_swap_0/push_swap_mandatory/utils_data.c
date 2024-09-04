@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 22:03:10 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:52:28 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	data_error(t_push_swap *data);
 void	free_data(t_push_swap *data);
-void	initialize_data(t_push_swap *data, int ac,char **av,bool write_mode);
+void	initialize_data(t_push_swap *data, int ac, char **av, bool write_mode);
 void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
 void	fill_stack(t_push_swap *data, t_stack *stack, \
-int stack_size, char **digits);
+		int stack_size, char **digits);
 
-void	initialize_data(t_push_swap *data, int ac,char **av, bool write_mode)
+void	initialize_data(t_push_swap *data, int ac, char **av, bool write_mode)
 {
-	int	stack_size;
-	char **digits;
+	int		stack_size;
+	char	**digits;
 
 	if (ac == 2)
 	{
@@ -52,7 +52,7 @@ void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size)
 	buffer_size = sizeof(int) * stack_size;
 	stack->buffer = malloc(buffer_size);
 	if (stack->buffer == NULL)
-		return data_error(data);
+		return (data_error(data));
 	stack->i_top = 0;
 	stack->i_bottom = 0;
 	stack->size = stack_size;
@@ -69,7 +69,7 @@ int stack_size, char **digits)
 	numbers = malloc(sizeof(int) * stack_size);
 	if (numbers == NULL)
 		data_error(data);
-	while(digits[i])
+	while (digits[i])
 	{
 		if (validate_numbers(digits[i]) == false)
 			data_error(data);
@@ -88,6 +88,7 @@ void	data_error(t_push_swap *data)
 	ft_putendl_fd("Error", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
+
 void	free_data(t_push_swap *data)
 {
 	if (data->stack_a.buffer)

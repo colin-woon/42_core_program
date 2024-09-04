@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:01:53 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/03 11:36:40 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 14:02:58 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,19 @@ void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort)
 
 void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 {
-	int	pivot_upper;
-	int	pivot_lower;
-	int	next_value;
-	int	max_value;
-	int	lower_threshold;
-	int	upper_threshold;
+	t_qsort_vars	vars;
 
 	set_split_areas(chunk->area, dest);
-	set_pivots(dest, chunk->area, chunk->size, &pivot_upper, &pivot_lower);
-	max_value = get_chunk_value(data, chunk->area, chunk->size, true);
-	upper_threshold = max_value - pivot_lower;
-	lower_threshold = max_value - pivot_upper;
-	while(chunk->size--)
+	set_pivots(dest, chunk, &vars.pivot_upper, &vars.pivot_lower);
+	vars.max_value = get_chunk_value(data, chunk->area, chunk->size, true);
+	vars.upper_threshold = vars.max_value - vars.pivot_lower;
+	vars.lower_threshold = vars.max_value - vars.pivot_upper;
+	while (chunk->size--)
 	{
-		next_value = get_chunk_value(data, chunk->area, 1, false);
-		if (next_value > upper_threshold)
+		vars.next_value = get_chunk_value(data, chunk->area, 1, false);
+		if (vars.next_value > vars.upper_threshold)
 			dest->max.size += move_from_to(data, chunk->area, dest->max.area);
-		else if (next_value > lower_threshold)
+		else if (vars.next_value > vars.lower_threshold)
 			dest->mid.size += move_from_to(data, chunk->area, dest->mid.area);
 		else
 			dest->min.size += move_from_to(data, chunk->area, dest->min.area);
@@ -79,7 +74,7 @@ void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 
 void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
 {
-	if(chunk_to_sort->area == BOTTOM_A \
+	if (chunk_to_sort->area == BOTTOM_A \
 	|| chunk_to_sort->area == BOTTOM_B \
 	|| chunk_to_sort->area == TOP_B)
 		move_from_to(data, chunk_to_sort->area, TOP_A);
@@ -95,8 +90,8 @@ void	sort_two_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
 	|| chunk_to_sort->area == BOTTOM_B \
 	|| chunk_to_sort->area == TOP_B)
 	{
-			move_from_to(data, chunk_to_sort->area, TOP_A);
-			move_from_to(data, chunk_to_sort->area, TOP_A);
+		move_from_to(data, chunk_to_sort->area, TOP_A);
+		move_from_to(data, chunk_to_sort->area, TOP_A);
 	}
 	top = get_stack_value(&data->stack_a, 1);
 	btm = get_stack_value(&data->stack_a, 2);

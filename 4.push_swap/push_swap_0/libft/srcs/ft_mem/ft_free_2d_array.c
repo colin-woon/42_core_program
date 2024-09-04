@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:27:37 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 19:32:59 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:22:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	ft_free_2d_array(char **array)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (array[i])
 	{
 		free(array[i]);

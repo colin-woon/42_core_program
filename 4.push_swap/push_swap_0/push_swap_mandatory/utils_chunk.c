@@ -6,18 +6,18 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:56:24 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/02 21:14:21 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:54:38 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	set_split_areas(t_area current_area, t_split_dest *dest);
-void	set_pivots (t_split_dest *dest ,\
-t_area current_area, int split_size, int *pivot_upper, int *pivot_lower);
+void	set_pivots(t_split_dest *dest, t_chunk *chunk, int *pivot_upper, \
+		int *pivot_lower);
 int		get_chunk_value(t_push_swap *data, t_area current_area, int n, \
 bool is_finding_max);
-t_stack *get_stack_at(t_push_swap *data, t_area current_area);
+t_stack	*get_stack_at(t_push_swap *data, t_area current_area);
 int		get_current_index(t_area current_area, t_stack *stack);
 
 void	set_split_areas(t_area current_area, t_split_dest *dest)
@@ -48,13 +48,17 @@ void	set_split_areas(t_area current_area, t_split_dest *dest)
 	}
 }
 
-void	set_pivots (t_split_dest *dest ,\
-t_area current_area, int split_size, int *pivot_upper, int *pivot_lower)
+void	set_pivots(t_split_dest *dest, t_chunk *chunk, int *pivot_upper, \
+		int *pivot_lower)
 {
+	t_area	current_area;
+	int		split_size;
+
+	current_area = chunk->area;
+	split_size = chunk->size;
 	dest->max.size = 0;
 	dest->mid.size = 0;
 	dest->min.size = 0;
-
 	*pivot_lower = split_size / 3;
 	if (current_area == TOP_A || current_area == BOTTOM_A)
 	{
@@ -70,12 +74,12 @@ t_area current_area, int split_size, int *pivot_upper, int *pivot_lower)
 	}
 }
 
-int		get_chunk_value(t_push_swap *data, t_area current_area, int size, \
-bool is_finding_max)
+int	get_chunk_value(t_push_swap *data, t_area current_area, int size, \
+	bool is_finding_max)
 {
-	t_stack *stack;
-	int	i;
-	int	max_value;
+	t_stack	*stack;
+	int		i;
+	int		max_value;
 
 	max_value = 0;
 	stack = get_stack_at(data, current_area);
@@ -105,10 +109,10 @@ t_stack	*get_stack_at(t_push_swap *data, t_area current_area)
 		return (&data->stack_b);
 }
 
-int		get_current_index(t_area current_area, t_stack *stack)
+int	get_current_index(t_area current_area, t_stack *stack)
 {
 	if (current_area == TOP_A || current_area == TOP_B)
-		return (stack->i_top) ;
+		return (stack->i_top);
 	else
-		return (stack->i_bottom) ;
+		return (stack->i_bottom);
 }

@@ -6,17 +6,18 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:47:03 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/26 21:17:44 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:42:09 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "push_swap.h"
 
-void		push(t_stack *src, t_stack *dest);
-void		push_a(t_push_swap *data);
-void		push_b(t_push_swap *data);
+void	push(t_stack *src, t_stack *dest);
+void	push_a(t_push_swap *data);
+void	push_b(t_push_swap *data);
 
-void		push(t_stack *src, t_stack *dest)
+void	push(t_stack *src, t_stack *dest)
 {
 	int	i_dest;
 
@@ -28,17 +29,17 @@ void		push(t_stack *src, t_stack *dest)
 	src->buffer[src->i_top] = 0;
 	src->i_top = get_index_down(src, src->i_top);
 }
-void		push_a(t_push_swap *data)
+
+void	push_a(t_push_swap *data)
 {
 	push(&data->stack_b, &data->stack_a);
 	if (&data->write_mode)
 		save_operation(data, pa);
 }
 
-void		push_b(t_push_swap *data)
+void	push_b(t_push_swap *data)
 {
 	push(&data->stack_a, &data->stack_b);
 	if (data->write_mode)
 		save_operation(data, pb);
 }
-

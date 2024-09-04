@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:43:56 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 01:01:05 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:57:43 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	post_sort_optimization(t_push_swap *data)
 	t_list	*optimized_list;
 
 	if (data->operations_list == NULL)
-		return;
+		return ;
 	optimized_list = NULL;
 	polish_operations_list(data->operations_list, &optimized_list);
 	if (is_valid_list(optimized_list))
@@ -54,10 +54,12 @@ void	polish_operations_list(t_list *ops_list, t_list **optimized_list)
 			reader = reader->next->next;
 		else
 		{
-			save_optimized_operation(optimized_list, (t_operations)(uintptr_t)reader->content);
+			save_optimized_operation(optimized_list, \
+			(t_operations)(uintptr_t)reader->content);
 			reader = reader->next;
 		}
 	}
 	if (reader)
-		save_optimized_operation(optimized_list, (t_operations)(uintptr_t)reader->content);
+		save_optimized_operation(optimized_list, \
+		(t_operations)(uintptr_t)reader->content);
 }

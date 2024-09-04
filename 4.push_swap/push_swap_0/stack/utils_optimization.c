@@ -6,16 +6,18 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:54:26 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 00:44:38 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:18:59 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
 t_operations	get_double_operation(t_operations now_op, t_operations next_op);
-bool			is_useless_operations(t_operations now_op, t_operations next_op);
+bool			is_useless_operations(t_operations now_op, \
+t_operations next_op);
 bool			is_valid_list(t_list *optimized);
-void			save_optimized_operation(t_list **optimized, t_operations optimized_op);
+void			save_optimized_operation(t_list **optimized, \
+t_operations optimized_op);
 
 t_operations	get_double_operation(t_operations now_op, t_operations next_op)
 {
@@ -65,7 +67,5 @@ void	save_optimized_operation(t_list **optimized, t_operations optimized_op)
 	new_op = ft_lstnew((void *)(uintptr_t) optimized_op);
 	if (new_op == NULL)
 		return ;
-	ft_lstadd_back(optimized , new_op);
+	ft_lstadd_back(optimized, new_op);
 }
-
-

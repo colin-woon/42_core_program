@@ -6,17 +6,17 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:27:58 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/03 10:47:55 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:58:03 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 int		move_from_to(t_push_swap *data, t_area from, t_area to);
-void	move_from_top_a(t_push_swap *data,t_area to);
-void	move_from_bottom_a(t_push_swap *data,t_area to);
-void	move_from_top_b(t_push_swap *data,t_area to);
-void	move_from_bottom_b(t_push_swap *data,t_area to);
+void	move_from_top_a(t_push_swap *data, t_area to);
+void	move_from_bottom_a(t_push_swap *data, t_area to);
+void	move_from_top_b(t_push_swap *data, t_area to);
+void	move_from_bottom_b(t_push_swap *data, t_area to);
 
 int	move_from_to(t_push_swap *data, t_area from, t_area to)
 {
