@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:12:49 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 14:00:26 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 20:25:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_qsort_vars
 // Utils Data
 void	data_error(t_push_swap *data);
 void	free_data(t_push_swap *data);
-void	initialize_data(t_push_swap *data, int ac, char **av, bool write_mode);
+void	init_and_validate_data(t_push_swap *data, int ac, char **av, bool write_mode);
 void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
 void	fill_stack(t_push_swap *data, t_stack *stack, \
 int stack_size, char **digits);
@@ -87,6 +87,7 @@ void	sort_five(t_push_swap *data);
 // Three-way Quick Sort
 void	three_way_quick_sort(t_push_swap *data);
 
+// Optimization
 void	post_sort_optimization(t_push_swap *data);
 
 #endif

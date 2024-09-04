@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:38:46 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 13:21:55 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 22:38:28 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <stdint.h>
 // # include <stdio.h>
 # include "ft_printf.h"
-# include "get_next_line.h"
 
 typedef struct s_list
 {

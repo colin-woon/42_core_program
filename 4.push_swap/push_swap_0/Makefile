@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/04 01:07:33 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/04 20:48:20 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #------------------------------------------------------------------------------#
 
 .PHONY: all bonus clean fclean re
-.SILENT:
+# .SILENT:
 
 #------------------------------------------------------------------------------#
 #                                VARIABLES                                     #
@@ -24,21 +24,23 @@
 # Compiler and flags
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR) -O2 $(DEBUG_FLAGS)
+VALGRIND_FLAGS	=	-ggdb3 -std=c11
 DEBUG_FLAGS		=	-g3 -fsanitize=address
 RM				=	rm -rf
 
 # Output file name
 NAME			=	push_swap
+BONUS_NAME		=	checker
 
 # Includes are all .h files
 INC_LIBFT		=	libft/includes
 LIBFT_FLAGS		=	-L$(LIBFT_DIR) -lft
 INC_DIR			=	includes/
-INC_FILES		=	push_swap.h stack.h
 
 # Sources are all .c files
 STACK_DIR		=	stack/
 PUSH_SWAP_DIR	=	push_swap_mandatory/
+CHECKER_DIR		=	checker_bonus/
 
 # Objects are all .o files
 OBJS_DIR		=	bin/
@@ -53,7 +55,7 @@ STACK_FILES 	=	stack/operations_1_swap.c \
 					stack/utils_optimization.c \
 					stack/utils_stack.c
 
-PUSH_SWAP_FILES	=	push_swap_mandatory/main.c \
+PUSH_SWAP_FILES	=	push_swap_mandatory/main_push_swap.c \
 					push_swap_mandatory/operations_chunk.c \
 					push_swap_mandatory/post_sort_optimization.c \
 					push_swap_mandatory/sort.c \
@@ -62,14 +64,34 @@ PUSH_SWAP_FILES	=	push_swap_mandatory/main.c \
 					push_swap_mandatory/utils_data.c \
 					push_swap_mandatory/utils_validate.c \
 
+CHECKER_FILES	=	checker_bonus/main_checker_bonus.c \
+					checker_bonus/utils_checker_bonus.c \
+					stack/operations_1_swap.c \
+					stack/operations_2_push.c \
+					stack/operations_3_rotate.c \
+					stack/operations_4_reverse_rotate.c \
+					stack/utils_operations.c \
+					stack/utils_optimization.c \
+					stack/utils_stack.c \
+					push_swap_mandatory/utils_data.c \
+					push_swap_mandatory/utils_validate.c \
+
 MANDATORY_FILES	=	$(STACK_FILES) $(PUSH_SWAP_FILES)
 MANDATORY_OBJS	=	$(patsubst %.c, $(OBJS_DIR)%.o, $(MANDATORY_FILES))
+
+BONUS_FILES	=	$(CHECKER_FILES)
+BONUS_OBJS	=	$(patsubst %.c, $(OBJS_DIR)%.o, $(BONUS_FILES))
 
 #------------------------------------------------------------------------------#
 #                                 TARGETS                                      #
 #------------------------------------------------------------------------------#
 
 all: $(NAME)
+
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME) : $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS_NAME) $(LIBFT_FLAGS)
 
 # Generates output file
 $(NAME): $(MANDATORY_OBJS)
@@ -82,6 +104,7 @@ $(OBJS_DIR)%.o: %.c | $(OBJS_DIR)
 
 # Rule to create the object directory if it doesn't exist
 $(OBJS_DIR):
+	mkdir -p $(OBJS_DIR)$(CHECKER_DIR)
 	mkdir -p $(OBJS_DIR)$(STACK_DIR)
 	mkdir -p $(OBJS_DIR)$(PUSH_SWAP_DIR)
 

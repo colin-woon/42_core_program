@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:42:29 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 13:39:51 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 14:13:30 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 # define STACK_H
 
 # include "libft.h"
-// # include "push_swap.h"
 
 typedef struct s_push_swap	t_push_swap;
-typedef struct circular_buffer_stack
+typedef struct s_circular_buffer_stack
 {
 	int	*buffer;
 	int	i_top;
 	int	i_bottom;
 	int	size;
-}			t_stack;
+}	t_stack;
 
-typedef enum stack_operations
+typedef enum e_stack_operations
 {
 	null_op,
 	pa,
@@ -61,6 +60,7 @@ bool			is_useless_operations(t_operations now_op, \
 bool			is_valid_list(t_list *optimized);
 void			save_optimized_operation(t_list **optimized, \
 				t_operations optimized_op);
+
 // Stack ADT Operations
 // Swap
 void			swap_a(t_push_swap *data);

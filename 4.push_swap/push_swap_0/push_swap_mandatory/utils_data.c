@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 13:52:28 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 20:25:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	data_error(t_push_swap *data);
 void	free_data(t_push_swap *data);
-void	initialize_data(t_push_swap *data, int ac, char **av, bool write_mode);
+void	init_and_validate_data(t_push_swap *data, int ac, char **av, bool write_mode);
 void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
 void	fill_stack(t_push_swap *data, t_stack *stack, \
 		int stack_size, char **digits);
 
-void	initialize_data(t_push_swap *data, int ac, char **av, bool write_mode)
+void	init_and_validate_data(t_push_swap *data, int ac, char **av, bool write_mode)
 {
 	int		stack_size;
 	char	**digits;
@@ -96,5 +96,9 @@ void	free_data(t_push_swap *data)
 	if (data->stack_b.buffer)
 		free(data->stack_b.buffer);
 	if (data->operations_list)
+	{
+		// ft_printf("Freeing");
 		ft_lstclear(&data->operations_list, NULL);
+		// free(data->operations_list);
+	}
 }

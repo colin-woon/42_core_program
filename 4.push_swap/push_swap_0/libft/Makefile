@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:32 by cwoon             #+#    #+#              #
-#    Updated: 2024/08/29 19:31:25 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/04 22:38:12 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,10 +72,8 @@ FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_print_char.c \
 					$(SRC_DIR)ft_printf/ft_print_unsigned_nbr.c \
 					$(SRC_DIR)ft_printf/ft_printf.c
 
-GNL_DIR			=	$(SRC_DIR)get_next_line/get_next_line.c
-
 # Concatenate all source files
-SRC 			= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR) $(GNL_DIR)
+SRC 			= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR)
 
 # Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
 OBJ 			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))

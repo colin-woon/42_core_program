@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:47:19 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/03 18:40:52 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 18:55:55 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ PARAMETERS
  */
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst == NULL || del == NULL)
+	if (lst == NULL)
+	{
+		ft_printf("Didnt free\n");
 		return ;
+	}
 	if (del)
 		del(lst->content);
 	free(lst);

@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:04:27 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/03 18:41:15 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/04 18:57:53 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*node;
 
-	if (lst == NULL || del == NULL || *lst == NULL)
+	if (lst == NULL || *lst == NULL)
+	{
+		ft_printf("List already empty");
 		return ;
+	}
 	while (*lst != NULL)
 	{
 		node = (*lst)->next;
