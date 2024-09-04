@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/04 20:48:20 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/05 02:48:01 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,7 @@ clean:
 # Removes objects and executables
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(BONUS_NAME)
 	make fclean -C $(LIBFT_DIR)
 
 # Removes objects and executables and remakes

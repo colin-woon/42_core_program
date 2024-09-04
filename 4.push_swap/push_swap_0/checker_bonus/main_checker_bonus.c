@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 22:55:56 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/05 02:05:41 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,3 @@ int	main(int ac, char **av)
 	free_data(&data);
 	exit(EXIT_SUCCESS);
 }
-
-
