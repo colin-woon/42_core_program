@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/05 02:24:15 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/05 02:49:25 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	data_error(t_push_swap *data);
 void	free_data(t_push_swap *data);
-void	init_and_validate_data(t_push_swap *data, int ac, char **av, bool write_mode);
+void	init_and_validate_data(t_push_swap *data, int ac, char **av, \
+		bool write_mode);
 void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
 void	fill_stack(t_push_swap *data, t_stack *stack, \
 		int stack_size, char **digits);
 
-void	init_and_validate_data(t_push_swap *data, int ac, char **av, bool write_mode)
+void	init_and_validate_data(t_push_swap *data, int ac, char **av, \
+		bool write_mode)
 {
 	int		stack_size;
 	char	**digits;

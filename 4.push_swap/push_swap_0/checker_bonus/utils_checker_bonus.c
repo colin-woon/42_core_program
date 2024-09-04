@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 20:26:57 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/05 02:46:04 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/05 02:49:50 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	get_operations_list(t_push_swap *data)
 		if (char_buffer == '\n')
 		{
 			op_str[i] = '\0';
-			// ft_printf("Operation read: '%s'\n", op_str);
 			save_operation(data, string_to_operation((const char *)op_str));
 			i = 0;
 			ft_bzero(op_str, 4);
