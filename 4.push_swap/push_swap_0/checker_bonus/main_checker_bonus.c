@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/07 15:23:33 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/07 15:57:01 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_push_swap	data;
 
-	init_and_validate_data(&data, ac, av, false);
+	init_and_validate_data_bonus(&data, ac, av, false);
 	if (data.stack_a.size == 0)
 		exit(EXIT_SUCCESS);
 	get_operations_list(&data);

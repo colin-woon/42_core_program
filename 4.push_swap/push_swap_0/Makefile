@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/05 02:48:01 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/07 15:59:00 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,8 @@ PUSH_SWAP_FILES	=	push_swap_mandatory/main_push_swap.c \
 
 CHECKER_FILES	=	checker_bonus/main_checker_bonus.c \
 					checker_bonus/utils_checker_bonus.c \
+					checker_bonus/utils_data_bonus.c \
+					checker_bonus/utils_validate_bonus.c \
 					stack/operations_1_swap.c \
 					stack/operations_2_push.c \
 					stack/operations_3_rotate.c \
@@ -73,8 +75,6 @@ CHECKER_FILES	=	checker_bonus/main_checker_bonus.c \
 					stack/utils_operations.c \
 					stack/utils_optimization.c \
 					stack/utils_stack.c \
-					push_swap_mandatory/utils_data.c \
-					push_swap_mandatory/utils_validate.c \
 
 MANDATORY_FILES	=	$(STACK_FILES) $(PUSH_SWAP_FILES)
 MANDATORY_OBJS	=	$(patsubst %.c, $(OBJS_DIR)%.o, $(MANDATORY_FILES))
