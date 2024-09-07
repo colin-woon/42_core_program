@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/05 02:05:41 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/07 13:06:19 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	main(int ac, char **av)
 	init_and_validate_data(&data, ac, av, false);
 	if (data.stack_a.size == 0)
 		exit(EXIT_SUCCESS);
+	// print_operations(data.operations_list);
 	get_operations_list(&data);
+	// print_operations(data.operations_list);
 	if (is_correctly_sorted(&data))
 		ft_printf("OK\n");
 	else

@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 20:26:57 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/05 02:49:50 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/07 13:12:48 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void			get_operations_list(t_push_swap *data);
 bool			is_correctly_sorted(t_push_swap *data);
 void			call_operation(t_push_swap *data, t_operations op);
 t_operations	string_to_operation(const char *op_str);
+void			execute_operation(t_push_swap *data, t_operations op);
 
 void	get_operations_list(t_push_swap *data)
 {
@@ -74,6 +75,27 @@ t_operations	string_to_operation(const char *op_str)
 
 void	call_operation(t_push_swap *data, t_operations op)
 {
+	if (op)
+		execute_operation(data, op);
+	else
+		return data_error(data);
+}
+
+bool	is_correctly_sorted(t_push_swap *data)
+{
+	t_list	*reader;
+
+	reader = data->operations_list;
+	while (reader)
+	{
+		call_operation(data, op_from(reader));
+		reader = reader->next;
+	}
+	return (is_sorted(data) && is_full(&data->stack_a));
+}
+
+void	execute_operation(t_push_swap *data, t_operations op)
+{
 	if (op == pa)
 		push_a(data);
 	else if (op == pb)
@@ -96,19 +118,6 @@ void	call_operation(t_push_swap *data, t_operations op)
 		swap_b(data);
 	else if (op == ss)
 		swap_ab(data);
-	else
-		data_error(data);
-}
-
-bool	is_correctly_sorted(t_push_swap *data)
-{
-	t_list	*reader;
-
-	reader = data->operations_list;
-	while (reader)
-	{
-		call_operation(data, (t_operations)(uintptr_t)reader->content);
-		reader = reader->next;
-	}
-	return (is_sorted(data) && is_full(&data->stack_a));
+	else if (op == null_op)
+		return ;
 }
