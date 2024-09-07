@@ -1,9 +1,9 @@
-#Learning Path
-## Time Complexity
-## Stack implemented as Circular Buffer
+# Learning Path
+### Time Complexity
+### Stack implemented as Circular Buffer
 - basically moving the array index to do operations
-## Merge Sort
-## Quick Sort
+### Merge Sort
+### Quick Sort
 - Divide & Conquer
 - Dutch National Flag Algorithm (Three-way Quick Sort)
 
@@ -40,5 +40,5 @@ gcc -Wall -Wextra -Werror -Iincludes/ -ILibft/srcs/ -LLibft/ objs/push_swap.o ob
 https://medium.com/@ulysse.gerkens/push-swap-in-less-than-4200-operations-c292f034f6c0
 
 # Tester
-https://github.com/PepeSegura/push_swap_Tester (Validation)
+https://github.com/PepeSegura/push_swap_Tester (Validation)  
 https://github.com/SimonCROS/push_swap_tester (Benchmark)
