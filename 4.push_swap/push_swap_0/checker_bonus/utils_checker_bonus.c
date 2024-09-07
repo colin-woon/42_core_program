@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 20:26:57 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/07 13:12:48 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/07 15:23:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	call_operation(t_push_swap *data, t_operations op)
 	if (op)
 		execute_operation(data, op);
 	else
-		return data_error(data);
+		return (data_error(data));
 }
 
 bool	is_correctly_sorted(t_push_swap *data)
