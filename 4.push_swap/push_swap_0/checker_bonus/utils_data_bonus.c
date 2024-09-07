@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/07 15:57:53 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/08 01:58:49 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,26 @@
 void	data_error(t_push_swap *data);
 void	free_data(t_push_swap *data);
 void	init_and_validate_data_bonus(t_push_swap *data, int ac, char **av, \
-		bool write_mode);
+		t_flag flag);
 void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
 void	fill_stack(t_push_swap *data, t_stack *stack, \
 		int stack_size, char **digits);
 
 void	init_and_validate_data_bonus(t_push_swap *data, int ac, char **av, \
-		bool write_mode)
+		t_flag flag)
 {
 	int		stack_size;
 	char	**digits;
 
-	if (ac == 2)
-	{
-		digits = ft_split(av[1], ' ');
-		stack_size = 0;
-		while (digits[stack_size])
-			stack_size++;
-	}
-	else
-	{
-		stack_size = ac - 1;
-		digits = ++av;
-	}
+	stack_size = 0;
+	digits = get_digits_n_stack_size(ac, av, &stack_size, flag);
 	initialize_stack(data, &data->stack_a, stack_size);
 	initialize_stack(data, &data->stack_b, stack_size);
 	fill_stack(data, &data->stack_a, stack_size, digits);
-	data->write_mode = write_mode;
+	ft_printf("after fill stacks\n");
+	data->write_mode = flag.write_mode;
 	data->operations_list = NULL;
-	if (ac == 2)
+	if (ac > 1 && ac <= 3)
 		ft_free_2d_array(digits);
 }
 
@@ -71,10 +62,13 @@ int stack_size, char **digits)
 	numbers = malloc(sizeof(int) * stack_size);
 	if (numbers == NULL)
 		data_error(data);
-	while (digits[i])
+	while (digits[i] && i <= stack->size)
 	{
 		if (validate_numbers_bonus(digits[i]) == false)
+		{
+			// ft_printf("digits is %d\n", (*digits)[i]);
 			data_error(data);
+		}
 		numbers[i] = ft_atoi(digits[i]);
 		i++;
 	}
