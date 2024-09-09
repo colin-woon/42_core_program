@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 20:26:57 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/07 15:23:20 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 16:35:53 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ bool	is_correctly_sorted(t_push_swap *data)
 		call_operation(data, op_from(reader));
 		reader = reader->next;
 	}
+
+	// if (!is_full(&data->stack_a))
+	// 	ft_printf("is_full failed\n");
 	return (is_sorted(data) && is_full(&data->stack_a));
 }
 

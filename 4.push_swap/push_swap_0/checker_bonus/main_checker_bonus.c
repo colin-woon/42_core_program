@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/08 01:10:56 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 16:35:40 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 
 	init_flags(ac, &flag);
 	check_flags(ac, av, &flag, &data);
-	ft_printf("s %d, e %d\n", flag.num_start, flag.num_end);
+	// ft_printf("s %d, e %d\n", flag.num_start, flag.num_end);
 	init_and_validate_data_bonus(&data, ac, av, flag);
 	if (data.stack_a.size == 0)
 		exit(EXIT_SUCCESS);
