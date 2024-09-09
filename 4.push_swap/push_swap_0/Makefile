@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/09 17:48:37 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/09 21:51:03 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@
 #                                VARIABLES                                     #
 #------------------------------------------------------------------------------#
 
-# Compiler and flags
+# Compiler and flag
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR) -O2 $(DEBUG_FLAGS)
 VALGRIND_FLAGS	=	-ggdb3 -std=c11
@@ -68,8 +68,8 @@ CHECKER_FILES	=	checker_bonus/main_checker_bonus.c \
 					checker_bonus/utils_checker_bonus.c \
 					checker_bonus/utils_data_bonus.c \
 					checker_bonus/utils_validate_bonus.c \
-					checker_bonus/utils_flags_bonus.c \
-					checker_bonus/utils_validate_flags_bonus.c \
+					checker_bonus/utils_flag_bonus.c \
+					checker_bonus/utils_validate_flag_bonus.c \
 					stack/operations_1_swap.c \
 					stack/operations_2_push.c \
 					stack/operations_3_rotate.c \

@@ -1,51 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_flags_bonus.c                                :+:      :+:    :+:   */
+/*   utils_flag_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 23:53:20 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 21:00:20 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 21:44:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void	init_flags(int ac, t_flag *flag);
-void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data);
+void	init_flag(int ac, t_flag *flag);
+void	check_flag(int ac, char **av, t_flag *flag, t_push_swap *data);
 char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 		t_flag flag);
 
-void	init_flags(int ac, t_flag *flag)
+void	init_flag(int ac, t_flag *flag)
 {
-	flag->is_colour = false;
-	flag->is_show_stack = false;
+	flag->is_display_stack = false;
 	flag->write_mode = false;
 	flag->found_at_end = false;
 	flag->num_start = 1;
 	flag->num_end = ac - 1;
-	flag->i_cflag = 0;
+	flag->i_vflag = 0;
 	flag->i_dash = 0;
 	flag->index = 0;
 }
 
-void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data)
+void	check_flag(int ac, char **av, t_flag *flag, t_push_swap *data)
 {
-	validate_flags(data, av, flag);
-	// ft_printf("flag->i_cflag is%d\n", flag->i_cflag);
-	if (flag->i_cflag)
+	validate_flag(data, av, flag);
+	// ft_printf("flag->i_vflag is%d\n", flag->i_vflag);
+	if (flag->i_vflag)
 	{
-		if (flag->i_cflag != 1 && flag->i_cflag != ac - 1)
+		if (flag->i_vflag != 1 && flag->i_vflag != ac - 1)
 			return (data_error(data));
-		else if (flag->i_cflag == 1)
+		else if (flag->i_vflag == 1)
 			flag->num_start++;
-		else if (flag->i_cflag == ac - 1)
+		else if (flag->i_vflag == ac - 1)
 		{
 			flag->num_end--;
 			flag->found_at_end = true;
 		}
-		flag->is_colour = true;
+		flag->is_display_stack = true;
 	}
 }
 
@@ -70,10 +69,10 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 	}
 	else
 	{
-		// ft_printf("i_cflag is %d\n",flag.i_cflag);
+		// ft_printf("i_vflag is %d\n",flag.i_vflag);
 		// ft_printf("num_start is %d\n",flag.num_start);
 		// ft_printf("num_end is %d\n",flag.num_end);
-		if (!flag.found_at_end && flag.is_colour)
+		if (!flag.found_at_end && flag.is_display_stack)
 			*stack_size = flag.num_end - 1;
 		else
 			*stack_size = flag.num_end;
@@ -84,3 +83,8 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 	}
 	return (digits);
 }
+
+// void	display_stack(t_push_swap *data);
+// {
+
+// }

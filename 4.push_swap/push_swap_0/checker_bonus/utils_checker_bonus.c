@@ -6,14 +6,14 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 20:26:57 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 16:35:53 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 21:54:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
 void			get_operations_list(t_push_swap *data);
-bool			is_correctly_sorted(t_push_swap *data);
+bool			is_correctly_sorted(t_push_swap *data, t_flag *flag);
 void			call_operation(t_push_swap *data, t_operations op);
 t_operations	string_to_operation(const char *op_str);
 void			execute_operation(t_push_swap *data, t_operations op);
@@ -81,7 +81,7 @@ void	call_operation(t_push_swap *data, t_operations op)
 		return (data_error(data));
 }
 
-bool	is_correctly_sorted(t_push_swap *data)
+bool	is_correctly_sorted(t_push_swap *data, t_flag *flag)
 {
 	t_list	*reader;
 
@@ -89,6 +89,10 @@ bool	is_correctly_sorted(t_push_swap *data)
 	while (reader)
 	{
 		call_operation(data, op_from(reader));
+		if (flag->is_display_stack)
+		{
+			ft_printf("Operation: %s\n", op_to_string(op_from(reader)));
+		}
 		reader = reader->next;
 	}
 
