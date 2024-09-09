@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/08 00:51:33 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/09 17:48:37 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ CHECKER_FILES	=	checker_bonus/main_checker_bonus.c \
 					checker_bonus/utils_data_bonus.c \
 					checker_bonus/utils_validate_bonus.c \
 					checker_bonus/utils_flags_bonus.c \
+					checker_bonus/utils_validate_flags_bonus.c \
 					stack/operations_1_swap.c \
 					stack/operations_2_push.c \
 					stack/operations_3_rotate.c \

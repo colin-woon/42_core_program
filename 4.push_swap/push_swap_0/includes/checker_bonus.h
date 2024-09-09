@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:34:15 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/08 01:57:50 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:08:42 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ typedef struct s_flag
 	bool	is_colour;
 	bool	is_show_stack;
 	bool	write_mode;
+	bool	found_at_end;
 	int		num_start;
 	int		num_end;
+	int		i_cflag;
 }	t_flag;
 
 void	get_operations_list(t_push_swap *data);
@@ -34,5 +36,7 @@ bool	validate_numbers_bonus(char *digits);
 void	init_flags(int ac, t_flag *flag);
 void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data);
 char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, t_flag flag);
+
+void	validate_flags(t_push_swap *data, char **av, t_flag *flag);
 
 #endif
