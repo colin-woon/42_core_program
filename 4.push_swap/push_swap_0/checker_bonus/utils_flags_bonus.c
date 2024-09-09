@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 23:53:20 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 19:39:51 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:09:07 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	init_flags(int ac, t_flag *flag)
 	flag->num_start = 1;
 	flag->num_end = ac - 1;
 	flag->i_cflag = 0;
+	flag->i_dash = 0;
+	flag->index = 0;
 }
 
 void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data)

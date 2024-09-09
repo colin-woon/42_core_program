@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:34:15 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 18:08:42 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:08:58 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_flag
 	int		num_start;
 	int		num_end;
 	int		i_cflag;
+	int		i_dash;
+	int		index;
 }	t_flag;
 
 void	get_operations_list(t_push_swap *data);
