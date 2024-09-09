@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 23:53:20 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 20:35:49 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 21:00:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	init_flags(int ac, t_flag *flag);
 void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data);
-char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, t_flag flag);
+char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
+		t_flag flag);
 
 void	init_flags(int ac, t_flag *flag)
 {
@@ -36,7 +37,7 @@ void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data)
 	if (flag->i_cflag)
 	{
 		if (flag->i_cflag != 1 && flag->i_cflag != ac - 1)
-			return data_error(data);
+			return (data_error(data));
 		else if (flag->i_cflag == 1)
 			flag->num_start++;
 		else if (flag->i_cflag == ac - 1)
@@ -48,7 +49,8 @@ void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data)
 	}
 }
 
-char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, t_flag flag)
+char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
+		t_flag flag)
 {
 	char	**digits;
 

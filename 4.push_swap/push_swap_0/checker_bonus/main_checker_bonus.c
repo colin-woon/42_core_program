@@ -6,11 +6,12 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 20:55:01 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:59:00 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
+
 void	check_output(t_push_swap *data, t_flag *flag);
 
 int	main(int ac, char **av)
@@ -48,5 +49,3 @@ void	check_output(t_push_swap *data, t_flag *flag)
 			ft_printf("KO\n");
 	}
 }
-
-

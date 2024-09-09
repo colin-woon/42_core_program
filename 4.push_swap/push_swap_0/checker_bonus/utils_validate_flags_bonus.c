@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:30:49 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 20:10:18 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 21:00:43 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	validate_flags(t_push_swap *data, char **av, t_flag *flag)
 	int	i;
 
 	i = 1;
-	while(av[i])
+	while (av[i])
 	{
 		get_index_dash_n_flag(av[i], &flag->i_dash, &flag->index);
 		if (flag->i_dash)
@@ -56,4 +56,3 @@ void	get_index_dash_n_flag(char *av, int *i_dash, int *i_flag)
 		i++;
 	}
 }
-

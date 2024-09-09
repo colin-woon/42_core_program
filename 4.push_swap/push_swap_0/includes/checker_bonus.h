@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:34:15 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 20:46:10 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 21:00:52 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_flag
 	int		index;
 }	t_flag;
 
-
 void	get_operations_list(t_push_swap *data);
 bool	is_correctly_sorted(t_push_swap *data);
 
@@ -41,7 +40,8 @@ bool	validate_numbers_bonus(char *digits);
 
 void	init_flags(int ac, t_flag *flag);
 void	check_flags(int ac, char **av, t_flag *flag, t_push_swap *data);
-char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, t_flag flag);
+char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
+		t_flag flag);
 
 void	validate_flags(t_push_swap *data, char **av, t_flag *flag);
 
