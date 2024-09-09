@@ -6,11 +6,12 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 16:35:40 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:55:01 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
+void	check_output(t_push_swap *data, t_flag *flag);
 
 int	main(int ac, char **av)
 {
@@ -24,13 +25,28 @@ int	main(int ac, char **av)
 	if (data.stack_a.size == 0)
 		exit(EXIT_SUCCESS);
 	get_operations_list(&data);
-	print_operations(data.operations_list);
-	if (is_correctly_sorted(&data))
-		flag.is_colour ? ft_printf("\033[1;32mOK\033[0m\n") : ft_printf("OK\n");  // Green for OK
-	else
-		flag.is_colour ? ft_printf("\033[1;31mKO\033[0m\n") : ft_printf("KO\n");
+	// print_operations(data.operations_list);
+	check_output(&data, &flag);
 	free_data(&data);
 	exit(EXIT_SUCCESS);
+}
+
+void	check_output(t_push_swap *data, t_flag *flag)
+{
+	if (is_correctly_sorted(data))
+	{
+		if (flag->is_colour)
+			ft_printf(COLOURED_OK);
+		else
+			ft_printf("OK\n");
+	}
+	else
+	{
+		if (flag->is_colour)
+			ft_printf(COLOURED_KO);
+		else
+			ft_printf("KO\n");
+	}
 }
 
 

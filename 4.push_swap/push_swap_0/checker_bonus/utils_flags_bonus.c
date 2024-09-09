@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 23:53:20 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 20:09:07 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:35:49 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, t_flag flag)
 
 	if (ac > 1 && ac <= 3)
 	{
-		ft_printf("num_start is %d\n",flag.num_start);
+		// ft_printf("num_start is %d\n",flag.num_start);
 		if (ac == 2)
 			digits = ft_split(av[1], ' ');
 		else
@@ -62,20 +62,20 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, t_flag flag)
 		*stack_size = 0;
 		while (digits[*stack_size])
 		{
-			ft_printf("stack size is %d\n", (*stack_size));
+			// ft_printf("stack size is %d\n", (*stack_size));
 			(*stack_size)++;
 		}
 	}
 	else
 	{
-		ft_printf("i_cflag is %d\n",flag.i_cflag);
-		ft_printf("num_start is %d\n",flag.num_start);
-		ft_printf("num_end is %d\n",flag.num_end);
+		// ft_printf("i_cflag is %d\n",flag.i_cflag);
+		// ft_printf("num_start is %d\n",flag.num_start);
+		// ft_printf("num_end is %d\n",flag.num_end);
 		if (!flag.found_at_end && flag.is_colour)
 			*stack_size = flag.num_end - 1;
 		else
 			*stack_size = flag.num_end;
-		ft_printf("stack size is %d\n", (*stack_size));
+		// ft_printf("stack size is %d\n", (*stack_size));
 		// ft_printf("in av %s\n",av[1]);
 		digits = &av[flag.num_start];
 		// ft_printf("flag num_start is%d\n", flag.num_start);

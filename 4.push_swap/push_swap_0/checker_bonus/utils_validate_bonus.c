@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 21:09:08 by ugerkens          #+#    #+#             */
-/*   Updated: 2024/09/09 16:05:22 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:36:06 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	validate_numbers_bonus(char *digits)
 	num = 0;
 	while (*digits)
 	{
-		ft_printf("validate digits is %d\n", (*digits));
+		// ft_printf("validate digits is %d\n", (*digits));
 		if (!ft_isdigit(*digits))
 			return (false);
 		num = num * 10 + (*digits - '0');

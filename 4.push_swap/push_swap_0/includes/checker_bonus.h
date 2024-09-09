@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:34:15 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 20:08:58 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:46:10 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define CHECKER_BONUS_H
 
 # include "push_swap.h"
+
+# define COLOURED_OK "\033[1;32mOK\033[0m\n"
+# define COLOURED_KO "\033[1;31mKO\033[0m\n"
 
 typedef struct s_flag
 {
@@ -27,6 +30,7 @@ typedef struct s_flag
 	int		i_dash;
 	int		index;
 }	t_flag;
+
 
 void	get_operations_list(t_push_swap *data);
 bool	is_correctly_sorted(t_push_swap *data);
