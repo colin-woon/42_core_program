@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/09 21:51:03 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/10 19:01:53 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@
 
 # Compiler and flag
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR) -O2 $(DEBUG_FLAGS)
+CFLAGS			=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR) -O2 $(VALGRIND_FLAGS)
 VALGRIND_FLAGS	=	-ggdb3 -std=c11
 DEBUG_FLAGS		=	-g3 -fsanitize=address
 RM				=	rm -rf
