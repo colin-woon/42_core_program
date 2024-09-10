@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 20:26:57 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/10 14:41:45 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/10 14:49:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ bool	is_correctly_sorted(t_push_swap *data, t_flag *flag)
 	reader = data->operations_list;
 	if (flag->is_display_stack)
 	{
+		ft_printf("\033[33mStarting operations...\033[0m\n");
 		print_stack(&data->stack_a, 'A');
 		print_stack(&data->stack_b, 'B');
 	}
@@ -96,7 +97,7 @@ bool	is_correctly_sorted(t_push_swap *data, t_flag *flag)
 		call_operation(data, op_from(reader));
 		if (flag->is_display_stack)
 		{
-			ft_printf("Operation: %s\n", op_to_string(op_from(reader)));
+			ft_printf("\033[33m\nOperation: %s\n\033[0m", op_to_string(op_from(reader)));
 			print_stack(&data->stack_a, 'A');
 			print_stack(&data->stack_b, 'B');
 		}
