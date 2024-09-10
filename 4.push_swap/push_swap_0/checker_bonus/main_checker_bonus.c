@@ -6,19 +6,21 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/10 18:46:51 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/10 21:48:27 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
 void	check_output(t_push_swap *data, t_flag *flag);
+void	init_data_state(t_push_swap *data);
 
 int	main(int ac, char **av)
 {
 	t_push_swap	data;
 	t_flag		flag;
 
+	init_data_state(&data);
 	init_flag(ac, &flag);
 	check_flag(ac, av, &flag, &data);
 	init_and_validate_data_bonus(&data, ac, av, flag);
@@ -46,4 +48,18 @@ void	check_output(t_push_swap *data, t_flag *flag)
 		else
 			ft_printf("KO\n");
 	}
+}
+
+void	init_data_state(t_push_swap *data)
+{
+	data->stack_a.buffer = NULL;
+	data->stack_a.i_top = 0;
+	data->stack_a.i_bottom = 0;
+	data->stack_a.size = 0;
+	data->stack_b.buffer = NULL;
+	data->stack_b.i_top = 0;
+	data->stack_b.i_bottom = 0;
+	data->stack_b.size = 0;
+	data->operations_list = NULL;
+	data->write_mode = false;
 }
