@@ -16,6 +16,7 @@ void	init_flag(int ac, t_flag *flag);
 void	check_flag(int ac, char **av, t_flag *flag, t_push_swap *data);
 char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 		t_flag flag);
+void	print_stack(t_stack *stack, char a_or_b);
 
 void	init_flag(int ac, t_flag *flag)
 {
@@ -84,7 +85,19 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 	return (digits);
 }
 
-// void	display_stack(t_push_swap *data);
-// {
+void	print_stack(t_stack *stack, char a_or_b)
+{
+	int	i;
+	int	size_count;
 
-// }
+	i = (*stack).i_top;
+	size_count = 1;
+	ft_printf("Stack %c: [ ", a_or_b);
+	while (size_count <= (*stack).size)
+	{
+		ft_printf("%d ", stack->buffer[i]);
+		size_count++;
+		i = get_index_down(stack, i);
+	}
+	ft_printf("]\n");
+}

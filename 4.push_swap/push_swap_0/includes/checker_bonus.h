@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:34:15 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 21:51:03 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/10 14:43:42 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_flag(int ac, t_flag *flag);
 void	check_flag(int ac, char **av, t_flag *flag, t_push_swap *data);
 char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 		t_flag flag);
+void	print_stack(t_stack *stack, char a_or_b);
 
 // Utils Validate Flags Bonus
 void	validate_flag(t_push_swap *data, char **av, t_flag *flag);
