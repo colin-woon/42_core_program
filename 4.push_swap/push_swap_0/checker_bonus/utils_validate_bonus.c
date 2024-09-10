@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 21:09:08 by ugerkens          #+#    #+#             */
-/*   Updated: 2024/09/09 20:36:06 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/10 18:48:24 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ bool	validate_numbers_bonus(char *digits)
 	num = 0;
 	while (*digits)
 	{
-		// ft_printf("validate digits is %d\n", (*digits));
 		if (!ft_isdigit(*digits))
 			return (false);
 		num = num * 10 + (*digits - '0');
@@ -77,7 +76,6 @@ void	ranking_numbers(int *numbers, int *stack_a, int size)
 	int	rank;
 
 	i = 0;
-	// ft_printf("size is %d\n", size);
 	while (i < size)
 	{
 		compare_i = 0;
@@ -88,10 +86,6 @@ void	ranking_numbers(int *numbers, int *stack_a, int size)
 				rank++;
 			compare_i++;
 		}
-		// ft_printf("compare_i is %d\n", compare_i);
-		// ft_printf("i is %d\n", i);
-		// ft_printf("numbers[compare_i] is %d\n", numbers[i]);
-		// ft_printf("stack_a[i] is %d\n", stack_a[i]);
 		stack_a[i] = rank;
 		i++;
 	}
@@ -104,16 +98,10 @@ bool	is_sorted(t_push_swap *data)
 
 	i = data->stack_a.i_top;
 	rank = 1;
-	// ft_printf("stack i_top is%d\n", data->stack_a.i_top);
 	while (rank <= data->stack_a.size)
 	{
-		// ft_printf("stack buffer i is%d\n", data->stack_a.buffer[i]);
-		// ft_printf("rank is%d\n", rank);
 		if (data->stack_a.buffer[i] != rank)
-		{
-			// ft_printf("is_sorted failed\n");
 			return (false);
-		}
 		rank++;
 		i = get_index_down(&data->stack_a, i);
 	}

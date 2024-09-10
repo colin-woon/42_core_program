@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:34:15 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/10 14:43:42 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/10 18:51:18 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@
 typedef struct s_flag
 {
 	bool	is_display_stack;
+	bool	is_colour;
 	bool	write_mode;
 	bool	found_at_end;
+	bool	found_v;
+	bool	found_c;
 	int		num_start;
 	int		num_end;
-	int		i_vflag;
+	int		i_flag;
 	int		i_dash;
 	int		index;
 }	t_flag;

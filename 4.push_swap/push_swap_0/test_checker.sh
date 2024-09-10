@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "CONDITION ac > 1 && ac <=3"
-echo "Coloured OK"
+echo "Normal OK"
 ./push_swap "1 2 3" | ./checker -v "1 2 3"
 ./push_swap "3 2 1" | ./checker -v "3 2 1"
 ./push_swap "1 2 3" | ./checker "1 2 3" -v
@@ -10,7 +10,7 @@ echo "Coloured OK"
 ./push_swap "7 6 5 4 3 2 1" | ./checker -v "7 6 5 4 3 2 1"
 echo ""
 
-echo "Normal OK"
+echo "Coloured OK"
 ./push_swap "1 2 3" | ./checker "1 2 3"
 ./push_swap "3 2 1" | ./checker "3 2 1"
 echo ""
@@ -28,7 +28,7 @@ echo "Should be Error"
 echo ""
 
 echo "CONDITION ac > 3"
-echo "Coloured OK"
+echo "Normal OK"
 ./push_swap 3 2 1 | ./checker -v 3 2 1
 ./push_swap 3 2 1 | ./checker 3 2 1 -v
 ./push_swap 1 2 3 | ./checker 1 2 3 -v
@@ -42,4 +42,16 @@ echo "Should be Error"
 ./push_swap 3 2 1 | ./checker 3 2 -1c
 ./push_swap 3 2 1 | ./checker 3 2 -v1
 ./push_swap 3 2 1 | ./checker 3 2 1-v
+echo ""
+
+echo "Should be Error when 2 flags"
+./push_swap 3 2 1 | ./checker 3 2 1-vv
+./push_swap 3 2 1 | ./checker 3 2 1-vc
+./push_swap 3 2 1 | ./checker 3 2 1 -v -v
+./push_swap 3 2 1 | ./checker 3 2 1 -v -v
+./push_swap 3 2 1 | ./checker -v -v 3 2 1
+./push_swap 3 2 1 | ./checker -v -v 3 2 1
+./push_swap 3 2 1 | ./checker -vc 3 2 1
+./push_swap 3 2 1 | ./checker -vv 3 2 1
+./push_swap 3 2 1 | ./checker 3 -v -v 2 1
 echo ""

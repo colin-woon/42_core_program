@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/09 16:36:09 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/10 18:47:24 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init_and_validate_data_bonus(t_push_swap *data, int ac, char **av, \
 	initialize_stack(data, &data->stack_a, stack_size);
 	initialize_stack(data, &data->stack_b, stack_size);
 	fill_stack(data, &data->stack_a, stack_size, digits);
-	// ft_printf("after fill stacks\n");
 	data->write_mode = flag.write_mode;
 	data->operations_list = NULL;
 	if (ac > 1 && ac <= 3)
@@ -64,13 +63,8 @@ int stack_size, char **digits)
 		data_error(data);
 	while (digits[i] && i < stack->size)
 	{
-		// ft_printf("i is %d\n", i);
-		// ft_printf("stack size is %d\n", stack_size);
 		if (validate_numbers_bonus(digits[i]) == false)
-		{
-			// ft_printf("Validate number failed\n");
 			data_error(data);
-		}
 		numbers[i] = ft_atoi(digits[i]);
 		i++;
 	}

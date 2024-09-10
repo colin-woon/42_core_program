@@ -21,11 +21,14 @@ void	print_stack(t_stack *stack, char a_or_b);
 void	init_flag(int ac, t_flag *flag)
 {
 	flag->is_display_stack = false;
+	flag->is_colour = true;
 	flag->write_mode = false;
 	flag->found_at_end = false;
+	flag->found_v = false;
+	flag->found_c = false;
 	flag->num_start = 1;
 	flag->num_end = ac - 1;
-	flag->i_vflag = 0;
+	flag->i_flag = 0;
 	flag->i_dash = 0;
 	flag->index = 0;
 }
@@ -33,19 +36,27 @@ void	init_flag(int ac, t_flag *flag)
 void	check_flag(int ac, char **av, t_flag *flag, t_push_swap *data)
 {
 	validate_flag(data, av, flag);
-	// ft_printf("flag->i_vflag is%d\n", flag->i_vflag);
-	if (flag->i_vflag)
+	if (flag->i_flag)
 	{
-		if (flag->i_vflag != 1 && flag->i_vflag != ac - 1)
+		if (flag->i_flag != 1 \
+		&& flag->i_flag != ac - 1 && flag->i_flag != ac - 2)
 			return (data_error(data));
-		else if (flag->i_vflag == 1)
+		else if (flag->i_flag == 1)
 			flag->num_start++;
-		else if (flag->i_vflag == ac - 1)
+		else if (flag->i_flag == ac - 1)
 		{
 			flag->num_end--;
 			flag->found_at_end = true;
 		}
-		flag->is_display_stack = true;
+		else if (flag->i_flag == ac - 2)
+		{
+			flag->num_end = flag->num_end - 2;
+			flag->found_at_end = true;
+		}
+		if (flag->found_v)
+			flag->is_display_stack = true;
+		else if (flag->found_c)
+			flag->is_colour = false;
 	}
 }
 
@@ -56,31 +67,21 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 
 	if (ac > 1 && ac <= 3)
 	{
-		// ft_printf("num_start is %d\n",flag.num_start);
 		if (ac == 2)
 			digits = ft_split(av[1], ' ');
 		else
 			digits = ft_split(av[flag.num_start], ' ');
 		*stack_size = 0;
 		while (digits[*stack_size])
-		{
-			// ft_printf("stack size is %d\n", (*stack_size));
 			(*stack_size)++;
-		}
 	}
 	else
 	{
-		// ft_printf("i_vflag is %d\n",flag.i_vflag);
-		// ft_printf("num_start is %d\n",flag.num_start);
-		// ft_printf("num_end is %d\n",flag.num_end);
-		if (!flag.found_at_end && flag.is_display_stack)
+		if (!flag.found_at_end && (flag.is_display_stack || !flag.is_colour))
 			*stack_size = flag.num_end - 1;
 		else
 			*stack_size = flag.num_end;
-		// ft_printf("stack size is %d\n", (*stack_size));
-		// ft_printf("in av %s\n",av[1]);
 		digits = &av[flag.num_start];
-		// ft_printf("flag num_start is%d\n", flag.num_start);
 	}
 	return (digits);
 }

@@ -13,7 +13,7 @@
 #include "checker_bonus.h"
 
 void	validate_flag(t_push_swap *data, char **av, t_flag *flag);
-void	get_index_dash_n_flag(char *av, int *i_dash, int *i_flag);
+void	get_index_dash_n_flag(char *av, t_flag *flag);
 
 void	validate_flag(t_push_swap *data, char **av, t_flag *flag)
 {
@@ -22,14 +22,16 @@ void	validate_flag(t_push_swap *data, char **av, t_flag *flag)
 	i = 1;
 	while (av[i])
 	{
-		get_index_dash_n_flag(av[i], &flag->i_dash, &flag->index);
+		get_index_dash_n_flag(av[i], flag);
 		if (flag->i_dash)
+			data_error(data);
+		else if (flag->found_c && flag->found_v)
 			data_error(data);
 		else if (flag->i_dash == 0 && flag->index)
 		{
 			if (flag->index == flag->i_dash + 1 && !av[i][flag->index + 1])
 			{
-				flag->i_vflag = i;
+				flag->i_flag = i;
 				break ;
 			}
 			else
@@ -39,7 +41,7 @@ void	validate_flag(t_push_swap *data, char **av, t_flag *flag)
 	}
 }
 
-void	get_index_dash_n_flag(char *av, int *i_dash, int *i_flag)
+void	get_index_dash_n_flag(char *av, t_flag *flag)
 {
 	int	i;
 
@@ -47,11 +49,16 @@ void	get_index_dash_n_flag(char *av, int *i_dash, int *i_flag)
 	while (av[i])
 	{
 		if (av[i] == '-')
-			*i_dash = i;
+			flag->i_dash = i;
 		if (av[i] == 'v')
 		{
-			*i_flag = i;
-			break ;
+			flag->index = i;
+			flag->found_v = true;
+		}
+		if (av[i] == 'c')
+		{
+			flag->index = i;
+			flag->found_c = true;
 		}
 		i++;
 	}
