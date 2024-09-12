@@ -40,5 +40,45 @@ gcc -Wall -Wextra -Werror -Iincludes/ -ILibft/srcs/ -LLibft/ objs/push_swap.o ob
 https://medium.com/@ulysse.gerkens/push-swap-in-less-than-4200-operations-c292f034f6c0
 
 # Tester
-https://github.com/PepeSegura/push_swap_Tester (Validation)  
+https://github.com/PepeSegura/push_swap_Tester (Validation)
 https://github.com/SimonCROS/push_swap_tester (Benchmark)
+
+# How it works:
+## Circular Buffer Array
+Special functions to handle index increment and decrement
+- `get_current_size`
+	- Index of top and bottom is the same and at top is 0 = size 0
+	- If top > bottom = Size - Top + Bottom + 1
+	- Normal case = Bottom - Top + 1
+- `get_index_up`\
+	- Normal case = index - 1 (decrement)
+	- If already at start of array, 0 = stack_bottom index
+	- If current size of stack is 0 = index
+- `get_index_down`
+	- Normal case = index + 1 (increment)
+	- If already at end of array, 0 = stack top index
+	- If current size of stack is 0 = index
+### Swap
+- If stack is 1 number or empty, do nothing
+- Swap using get_index_down with top as index
+### Push
+- If other stack is full, do nothing
+- Push by get_index_up with top index from dest stack, then reassigning the top index of both the src and dest stack
+### Rotate
+- If stack is full, reassign bottom to top index, increment top index
+- If not full, increment bottom index, save value at top index with it, then reassign top index by incrementing it
+### Reverse Rotate
+- If stack is full, reassign top to bottom index, decrement bottom index
+- If not full, decrement top index, save value at bottom index with it, then reassign bottom index by decrementing it
+
+## Three-Way-Quick-Sort
+
+### Check utils_chunk for the split area setting
+### Dynamic Pivots
+- If TOP_A OR BOTTOM_A
+	- pivot lower = size / 3
+	- pivot upper = size < 15 ? size : 2 * size / 3
+- If TOP_B OR BOTTOM_B
+	- pivot upper = size / 2
+	- pivot_lower = BOTTOM_B && size < 8 ? size / 2 : size / 3
+- Then, and upper and lower threshold is determined by subtracting the pivots  with the current max value of the chunk.
