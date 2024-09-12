@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/10 18:47:24 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/12 17:06:31 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_and_validate_data_bonus(t_push_swap *data, int ac, char **av, \
 	fill_stack(data, &data->stack_a, stack_size, digits);
 	data->write_mode = flag.write_mode;
 	data->operations_list = NULL;
-	if (ac > 1 && ac <= 3)
+	if (ac == 2 || (ac == 3 && (!flag.is_colour || flag.is_display_stack)))
 		ft_free_2d_array(digits);
 }
 

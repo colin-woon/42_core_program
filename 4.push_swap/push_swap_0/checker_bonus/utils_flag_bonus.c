@@ -69,9 +69,13 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 	{
 		if (ac == 2)
 			digits = ft_split(av[1], ' ');
-		else
-			digits = ft_split(av[flag.num_start], ' ');
-		*stack_size = 0;
+		else if (ac == 3)
+		{
+			if (!flag.is_colour || flag.is_display_stack)
+				digits = ft_split(av[flag.num_start], ' ');
+			else
+				digits = &av[flag.num_start];
+		}
 		while (digits[*stack_size])
 			(*stack_size)++;
 	}

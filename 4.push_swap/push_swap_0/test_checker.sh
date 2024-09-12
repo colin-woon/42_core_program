@@ -25,6 +25,18 @@ echo "Should be Error"
 ./push_swap "1 2 3" | ./checker "1 2 -v3"
 ./push_swap "1 2 3" | ./checker "1 2-v 3"
 ./push_swap "1 2 3" | ./checker "1 -v2 3"
+./push_swap 1 2 | ./checker -v2 1
+./push_swap 1 2 | ./checker 1-c 2
+./push_swap 1 2 | ./checker 1 2-c
+./push_swap 1 2 | ./checker 1 2-c
+./push_swap 1 2 | ./checker 1 -2c
+./push_swap 1 2 | ./checker 1 -v2
+./push_swap 1 2 | ./checker 2 abc
+echo ""
+
+echo "Should be KO"
+./push_swap 1 2 | ./checker 2 1
+./push_swap 2 1 | ./checker 1 2
 echo ""
 
 echo "CONDITION ac > 3"
