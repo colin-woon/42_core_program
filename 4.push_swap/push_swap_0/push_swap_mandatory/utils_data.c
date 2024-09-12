@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/08 01:49:55 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/12 21:17:00 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	data_error(t_push_swap *data);
 void	free_data(t_push_swap *data);
 void	init_and_validate_data(t_push_swap *data, int ac, char **av, \
-		bool write_mode);
+			bool write_mode);
 void	initialize_stack(t_push_swap *data, t_stack *stack, int stack_size);
 void	fill_stack(t_push_swap *data, t_stack *stack, \
 		int stack_size, char **digits);
@@ -87,7 +87,7 @@ int stack_size, char **digits)
 void	data_error(t_push_swap *data)
 {
 	free_data(data);
-	ft_putendl_fd("Error", STDERR_FILENO);
+	ft_putendl_fd("Error\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 

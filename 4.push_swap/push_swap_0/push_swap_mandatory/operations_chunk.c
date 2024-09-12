@@ -6,17 +6,17 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:27:58 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 13:58:03 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/12 18:52:55 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		move_from_to(t_push_swap *data, t_area from, t_area to);
-void	move_from_top_a(t_push_swap *data, t_area to);
-void	move_from_bottom_a(t_push_swap *data, t_area to);
-void	move_from_top_b(t_push_swap *data, t_area to);
-void	move_from_bottom_b(t_push_swap *data, t_area to);
+int			move_from_to(t_push_swap *data, t_area from, t_area to);
+static void	move_from_top_a(t_push_swap *data, t_area to);
+static void	move_from_bottom_a(t_push_swap *data, t_area to);
+static void	move_from_top_b(t_push_swap *data, t_area to);
+static void	move_from_bottom_b(t_push_swap *data, t_area to);
 
 int	move_from_to(t_push_swap *data, t_area from, t_area to)
 {
@@ -31,7 +31,7 @@ int	move_from_to(t_push_swap *data, t_area from, t_area to)
 	return (1);
 }
 
-void	move_from_top_a(t_push_swap *data, t_area to)
+static void	move_from_top_a(t_push_swap *data, t_area to)
 {
 	if (to == BOTTOM_A)
 		rotate_a(data);
@@ -44,7 +44,7 @@ void	move_from_top_a(t_push_swap *data, t_area to)
 	}
 }
 
-void	move_from_bottom_a(t_push_swap *data, t_area to)
+static void	move_from_bottom_a(t_push_swap *data, t_area to)
 {
 	if (to == TOP_A)
 		r_rotate_a(data);
@@ -61,7 +61,7 @@ void	move_from_bottom_a(t_push_swap *data, t_area to)
 	}
 }
 
-void	move_from_top_b(t_push_swap *data, t_area to)
+static void	move_from_top_b(t_push_swap *data, t_area to)
 {
 	if (to == BOTTOM_B)
 		rotate_b(data);
@@ -74,7 +74,7 @@ void	move_from_top_b(t_push_swap *data, t_area to)
 	}
 }
 
-void	move_from_bottom_b(t_push_swap *data, t_area to)
+static void	move_from_bottom_b(t_push_swap *data, t_area to)
 {
 	if (to == TOP_B)
 		r_rotate_b(data);

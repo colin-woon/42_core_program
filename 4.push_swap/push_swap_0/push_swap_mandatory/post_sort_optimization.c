@@ -6,14 +6,14 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:43:56 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/07 12:53:13 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/12 18:53:02 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	post_sort_optimization(t_push_swap *data);
-void	polish_operations_list(t_list *ops_list, t_list **optimized_list);
+void		post_sort_optimization(t_push_swap *data);
+static void	polish_operations_list(t_list *ops_list, t_list **optimized_list);
 
 void	post_sort_optimization(t_push_swap *data)
 {
@@ -35,7 +35,7 @@ void	post_sort_optimization(t_push_swap *data)
 	}
 }
 
-void	polish_operations_list(t_list *ops_list, t_list **optimized_list)
+static void	polish_operations_list(t_list *ops_list, t_list **optimized_list)
 {
 	t_list			*reader;
 	t_operations	double_operation;

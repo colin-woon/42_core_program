@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:09:04 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/12 17:06:31 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/12 21:15:08 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int stack_size, char **digits)
 void	data_error(t_push_swap *data)
 {
 	free_data(data);
-	ft_putendl_fd("Error", STDERR_FILENO);
+	ft_putendl_fd("Error\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 

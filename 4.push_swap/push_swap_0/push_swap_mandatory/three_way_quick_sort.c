@@ -6,17 +6,17 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:01:53 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/04 14:02:58 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/12 18:53:15 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	three_way_quick_sort(t_push_swap *data);
-void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort);
-void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest);
-void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort);
-void	sort_two_chunk(t_push_swap *data, t_chunk *chunk_to_sort);
+void		three_way_quick_sort(t_push_swap *data);
+static void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort);
+static void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest);
+static void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort);
+static void	sort_two_chunk(t_push_swap *data, t_chunk *chunk_to_sort);
 
 void	three_way_quick_sort(t_push_swap *data)
 {
@@ -27,7 +27,7 @@ void	three_way_quick_sort(t_push_swap *data)
 	recursive_chunk_sort(data, &head_chunk);
 }
 
-void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort)
+static void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort)
 {
 	t_split_dest	dest;
 
@@ -51,7 +51,7 @@ void	recursive_chunk_sort(t_push_swap *data, t_chunk *chunk_to_sort)
 	recursive_chunk_sort(data, &dest.min);
 }
 
-void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
+static void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 {
 	t_qsort_vars	vars;
 
@@ -72,7 +72,7 @@ void	split_chunk(t_push_swap *data, t_chunk *chunk, t_split_dest *dest)
 	}
 }
 
-void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
+static void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
 {
 	if (chunk_to_sort->area == BOTTOM_A \
 	|| chunk_to_sort->area == BOTTOM_B \
@@ -81,7 +81,7 @@ void	sort_one_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
 	chunk_to_sort->size -= 1;
 }
 
-void	sort_two_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
+static void	sort_two_chunk(t_push_swap *data, t_chunk *chunk_to_sort)
 {
 	int	top;
 	int	btm;

@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/29 16:26:34 by cwoon             #+#    #+#              #
-#    Updated: 2024/09/10 22:00:57 by cwoon            ###   ########.fr        #
+#    Updated: 2024/09/12 21:32:26 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #------------------------------------------------------------------------------#
 
 .PHONY: all bonus clean fclean re
-# .SILENT:
+.SILENT:
 
 #------------------------------------------------------------------------------#
 #                                VARIABLES                                     #
@@ -23,7 +23,7 @@
 
 # Compiler and flag
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR) $(VALGRIND_FLAGS) $(DEBUG_FLAGS)
+CFLAGS			=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR)
 VALGRIND_FLAGS	=	-ggdb3 -std=c11
 DEBUG_FLAGS		=	-g3 -fsanitize=address
 RM				=	rm -rf
@@ -125,4 +125,4 @@ fclean: clean
 	make fclean -C $(LIBFT_DIR)
 
 # Removes objects and executables and remakes
-re: fclean all
+re: fclean $(OBJS_DIR) all

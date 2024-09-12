@@ -6,14 +6,14 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 01:33:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/10 21:48:27 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/12 19:01:57 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void	check_output(t_push_swap *data, t_flag *flag);
-void	init_data_state(t_push_swap *data);
+static void	check_output(t_push_swap *data, t_flag *flag);
+static void	init_data_state(t_push_swap *data);
 
 int	main(int ac, char **av)
 {
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	exit(EXIT_SUCCESS);
 }
 
-void	check_output(t_push_swap *data, t_flag *flag)
+static void	check_output(t_push_swap *data, t_flag *flag)
 {
 	if (is_correctly_sorted(data, flag))
 	{
@@ -50,7 +50,7 @@ void	check_output(t_push_swap *data, t_flag *flag)
 	}
 }
 
-void	init_data_state(t_push_swap *data)
+static void	init_data_state(t_push_swap *data)
 {
 	data->stack_a.buffer = NULL;
 	data->stack_a.i_top = 0;
