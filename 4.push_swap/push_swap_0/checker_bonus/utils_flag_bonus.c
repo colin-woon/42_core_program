@@ -17,6 +17,7 @@ void	check_flag(int ac, char **av, t_flag *flag, t_push_swap *data);
 char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 		t_flag flag);
 void	print_stack(t_stack *stack, char a_or_b);
+void	get_stack_size(char **digits, int *stack_size);
 
 void	init_flag(int ac, t_flag *flag)
 {
@@ -65,6 +66,7 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 {
 	char	**digits;
 
+	digits = NULL;
 	if (ac > 1 && ac <= 3)
 	{
 		if (ac == 2)
@@ -76,8 +78,7 @@ char	**get_digits_n_stack_size(int ac, char **av, int *stack_size, \
 			else
 				digits = &av[flag.num_start];
 		}
-		while (digits[*stack_size])
-			(*stack_size)++;
+		get_stack_size(digits, stack_size);
 	}
 	else
 	{
@@ -105,4 +106,10 @@ void	print_stack(t_stack *stack, char a_or_b)
 		i = get_index_down(stack, i);
 	}
 	ft_printf("]\n");
+}
+
+void	get_stack_size(char **digits, int *stack_size)
+{
+	while (digits[*stack_size])
+		(*stack_size)++;
 }
