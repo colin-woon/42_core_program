@@ -40,7 +40,7 @@ gcc -Wall -Wextra -Werror -Iincludes/ -ILibft/srcs/ -LLibft/ objs/push_swap.o ob
 https://medium.com/@ulysse.gerkens/push-swap-in-less-than-4200-operations-c292f034f6c0
 
 # Tester
-https://github.com/PepeSegura/push_swap_Tester (Validation)
+https://github.com/PepeSegura/push_swap_Tester (Validation)  
 https://github.com/SimonCROS/push_swap_tester (Benchmark)
 
 # How it works:
@@ -50,7 +50,7 @@ Special functions to handle index increment and decrement
 	- Index of top and bottom is the same and at top is 0 = size 0
 	- If top > bottom = Size - Top + Bottom + 1
 	- Normal case = Bottom - Top + 1
-- `get_index_up`\
+- `get_index_up`
 	- Normal case = index - 1 (decrement)
 	- If already at start of array, 0 = stack_bottom index
 	- If current size of stack is 0 = index
