@@ -6,14 +6,13 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:11:34 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/18 16:26:15 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/18 20:04:54 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 void	error_handler(int status, char *error_msg, int fd);
-int		open_file(char *file_name, int std_fd);
 char	*get_env(char *env_name, char **envp);
 char	*get_path(char *cmd, char **envp);
 void	execute_cmd(char *av_cmd, char **envp);
@@ -29,20 +28,6 @@ void	error_handler(int status, char *error_msg, int fd)
 	else
 		ft_putendl_fd("Undefined Error", fd);
 	exit(EXIT_FAILURE);
-}
-
-int	open_file(char *file_name, int std_fd)
-{
-	int	fd;
-
-	fd = 0;
-	if (std_fd == STDIN_FILENO)
-		fd = open(file_name, O_RDONLY, 0777);
-	else if (std_fd == STDOUT_FILENO)
-		fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fd == -1)
-		error_handler(-1, "File Error", 2);
-	return (fd);
 }
 
 char	*get_env(char *env_name, char **envp)
@@ -77,21 +62,22 @@ char	*get_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	all_paths = ft_split(get_env("PATH", envp), ':');
-	while (all_paths[i])
+	while(ft_strnstr(envp[i], "PATH", 4) == 0)
+		i++;
+	all_paths = ft_split(envp[i] + 4 + 1, ':');
+	i = -1;
+	while (all_paths[++i])
 	{
+		// printf("hi\n");
 		path_prefix = ft_strjoin(all_paths[i], "/");
 		cmd_path = ft_strjoin(path_prefix, cmd);
 		free(path_prefix);
 		if (access(cmd_path, F_OK | X_OK) == 0)
-		{
-			ft_free_2d_array(all_paths);
 			return (cmd_path);
-		}
 		free(cmd_path);
 	}
 	ft_free_2d_array(all_paths);
-	return (cmd);
+	return (0);
 }
 
 void	execute_cmd(char *av_cmd, char **envp)
@@ -101,8 +87,14 @@ void	execute_cmd(char *av_cmd, char **envp)
 
 	str_cmd = ft_split(av_cmd, ' ');
 	path = get_path(str_cmd[0], envp);
-	if(execve(path, str_cmd, envp) == -1)
+	if (path == 0)
 	{
+		ft_free_2d_array(str_cmd);
+		error_handler(-1, "Path Error", 2);
+	}
+	if (execve(path, str_cmd, envp) == -1)
+	{
+		free(path);
 		ft_free_2d_array(str_cmd);
 		error_handler(-1, "Execute Error", 2);
 	}

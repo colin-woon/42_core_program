@@ -11,7 +11,7 @@
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR) $(DEBUG)
+CFLAGS	=	-Wall -Werror -Wextra -I$(INC_LIBFT) -I$(INC_DIR)
 DEBUG	=	-g3 -fsanitize=address
 RM		=	rm -rf
 

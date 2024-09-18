@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:48:31 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/18 16:57:22 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,30 @@ PARAMETERS
 RETURN VALUES
     ft_strjoin() returns the new string; NULL if the memory allocation failed.
  */
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*tab;
 	int		i;
 	int		j;
-	char	*joined_str;
 
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
 	i = 0;
 	j = 0;
-	joined_str = (char *)malloc(sizeof(char) * \
-	(ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (joined_str == NULL)
+	if (!s1 || !s2)
 		return (NULL);
-	while (s1[i] != '\0')
+	tab = (char *)malloc(sizeof(*tab) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (tab == 0)
+		return (NULL);
+	while (s1[i])
 	{
-		joined_str[i] = s1[i];
+		tab[i] = s1[i];
 		i++;
 	}
-	while (s2[j] != '\0')
+	while (s2[j])
 	{
-		joined_str[i + j] = s2[j];
+		tab[i] = s2[j];
 		j++;
+		i++;
 	}
-	joined_str[i + j] = '\0';
-	return (joined_str);
+	tab[i] = '\0';
+	return (tab);
 }

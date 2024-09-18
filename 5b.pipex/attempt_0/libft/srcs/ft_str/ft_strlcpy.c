@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:33:11 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/18 17:01:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,23 @@ Input	:Destination pointer `*dest`, source pointer `*src`,
 		copy 'index' limit `size`
 Output	:Total size of source string
  */
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 
 	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (i < size - 1 && src[i] != '\0')
+	if (!dst || !src)
+		return (0);
+	if (size > 0)
 	{
-		dest[i] = src[i];
-		i++;
+		while (src[i] && --size)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	if (i < size)
-		dest[i] = '\0';
-	return (ft_strlen(src));
+	while (src[i])
+		i++;
+	return (i);
 }
