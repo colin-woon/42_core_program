@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:26:08 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/18 15:19:13 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		substr[i] = s[start + i];
 		i++;
 	}
+	substr[i] = '\0';
 	return (substr);
 }

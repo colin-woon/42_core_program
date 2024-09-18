@@ -22,13 +22,13 @@ NAME	=	pipex
 LIBFT_DIR		=	libft
 INC_LIBFT		=	libft/includes
 INC_DIR			=	includes/
-MANDATORY_DIR	=	mandatory_srcs/
+MANDATORY_DIR	=	srcs_mandatory/
 OBJS_DIR		=	bin/
 
 LIBFT_FLAGS		=	-L$(LIBFT_DIR) -lft
 
-PIPEX_MANDATORY	=	mandatory_srcs/pipex.c \
-					mandatory_srcs/utils.c
+PIPEX_MANDATORY	=	srcs_mandatory/pipex.c \
+					srcs_mandatory/utils.c
 
 MANDATORY_FILES	=	$(PIPEX_MANDATORY)
 MANDATORY_OBJS	=	$(patsubst %.c, $(OBJS_DIR)%.o, $(MANDATORY_FILES))
