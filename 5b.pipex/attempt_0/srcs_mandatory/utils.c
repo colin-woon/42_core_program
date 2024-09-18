@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:11:34 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/18 20:04:54 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/18 20:09:44 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ char	*get_path(char *cmd, char **envp)
 	i = -1;
 	while (all_paths[++i])
 	{
-		// printf("hi\n");
 		path_prefix = ft_strjoin(all_paths[i], "/");
 		cmd_path = ft_strjoin(path_prefix, cmd);
 		free(path_prefix);
