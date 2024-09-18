@@ -6,14 +6,13 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:11:34 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/18 20:09:44 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/18 21:36:56 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 void	error_handler(int status, char *error_msg, int fd);
-char	*get_env(char *env_name, char **envp);
 char	*get_path(char *cmd, char **envp);
 void	execute_cmd(char *av_cmd, char **envp);
 
@@ -30,30 +29,6 @@ void	error_handler(int status, char *error_msg, int fd)
 	exit(EXIT_FAILURE);
 }
 
-char	*get_env(char *env_name, char **envp)
-{
-	int		i_env;
-	int		i_str;
-	char	*current_env;
-
-	i_env = 0;
-	while (envp[i_env])
-	{
-		i_str = 0;
-		while (envp[i_env][i_str] && envp[i_env][i_str] != '=')
-			i_str++;
-		current_env = ft_substr(envp[i_env], 0, i_str);
-		if (ft_strncmp(current_env, env_name, ft_strlen(env_name + 1)) == 0)
-		{
-			free(current_env);
-			return (envp[i_env] + i_str + 1);
-		}
-		free(current_env);
-		i_env++;
-	}
-	return (NULL);
-}
-
 char	*get_path(char *cmd, char **envp)
 {
 	char	**all_paths;
@@ -62,7 +37,7 @@ char	*get_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	while(ft_strnstr(envp[i], "PATH", 4) == 0)
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
 	all_paths = ft_split(envp[i] + 4 + 1, ':');
 	i = -1;

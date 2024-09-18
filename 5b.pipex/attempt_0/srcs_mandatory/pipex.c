@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:08:03 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/18 20:46:18 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/09/18 21:36:29 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ int	main(int ac, char **av, char **envp)
 		if (pid == -1)
 			error_handler(-1, "Fork Error", 2);
 		if (pid == 0)
-		{
-			// printf("Child\n");
 			child_process(av, pipe_fd, envp);
-		}
-		// printf("Parent\n");
 		parent_process(av, pipe_fd, envp);
 		waitpid(pid, NULL, 0);
 	}
@@ -57,7 +53,6 @@ void	child_process(char **av, int *pipe_fd, char **envp)
 	close(infile_fd);
 	execute_cmd(av[2], envp);
 	close(pipe_fd[1]);
-	// exit(EXIT_SUCCESS);
 }
 
 void	parent_process(char **av, int *pipe_fd, char **envp)
@@ -73,5 +68,4 @@ void	parent_process(char **av, int *pipe_fd, char **envp)
 		error_handler(-1, "Parent Dup2/Close Error", 2);
 	execute_cmd(av[3], envp);
 	close(pipe_fd[0]);
-	// exit(EXIT_SUCCESS);
 }
