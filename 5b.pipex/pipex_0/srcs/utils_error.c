@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:36:13 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:47:26 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/19 22:41:01 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	error_handler(int status, char *error_msg, int fd);
 
 void	error_handler(int status, char *error_msg, int fd)
 {
-	if (status == EXIT_SUCCESS || status > 1)
-		return ;
-	else if (status == EXIT_FAILURE)
+	if (status == EXIT_FAILURE)
 		ft_putendl_fd(error_msg, fd);
 	else if (status == -1)
 	{
