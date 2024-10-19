@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:09:40 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:48:13 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/19 23:17:03 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // PIPES
 # define READ_END 0
 # define WRITE_END 1
-# define FLAG_SPACE -2
+# define FLAG_SPACE -1
 
 /* custom err msg */
 # define DIR_ERR_MSG "pipex: no such file or directory: "

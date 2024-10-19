@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:09:21 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:46:13 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/19 23:18:04 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,20 @@ char	*parse_single_quotes(char *str)
 
 char	*parse_spaces(char *str)
 {
-	int		is_in_quote;
-	int		i;
-	char	quote;
-	char	backslash;
+	int			in_quote;
+	int			i;
 
-	quote = '\'';
-	backslash = '\\';
-	is_in_quote = 0;
+	in_quote = 0;
 	i = -1;
-	while (str[i])
+	while (str[++i])
 	{
-		if (!is_in_quote && str[i] == quote)
-			is_in_quote = 1;
-		else if (is_in_quote && str[i] == quote)
-			is_in_quote = 0;
-		else if (!is_in_quote && str[i] == backslash && str[i + 1] == ' ')
+		if (!in_quote && str[i] == 39)
+			in_quote = 1;
+		else if (in_quote && str[i] == 39)
+			in_quote = 0;
+		else if (!in_quote && str[i] == 92 && str [i + 1] == ' ')
 			i++;
-		else if (!is_in_quote && str[i] == ' ')
+		else if (!in_quote && str[i] == ' ')
 			str[i] = FLAG_SPACE;
 	}
 	return (str);
