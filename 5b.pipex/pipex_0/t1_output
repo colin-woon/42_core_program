@@ -1,8 +1,0 @@
-Makefile
-bin
-includes
-libft
-pipex
-srcs
-t1_output
-tester_pipex.sh
