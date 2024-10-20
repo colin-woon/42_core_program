@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:09:40 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 23:17:03 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/20 13:21:28 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	error_handler(int status, char *error_msg, int fd);
 int		is_bad_args(int ac, char **av);
 int		**get_pipefd(t_info *info);
 int		get_exit_code(int status, t_info *info);
+int		cmd_lstsize(t_cmd *start);
 
 // Utils Free
 void	clean_up(t_info *info);

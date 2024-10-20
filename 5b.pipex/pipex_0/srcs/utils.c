@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:59:01 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:46:27 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/20 13:21:19 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	is_bad_args(int ac, char **av);
 int	**get_pipefd(t_info *info);
 int	get_exit_code(int status, t_info *info);
+int	cmd_lstsize(t_cmd *start);
 
 int	is_bad_args(int ac, char **av)
 {
@@ -65,4 +66,17 @@ int	get_exit_code(int status, t_info *info)
 	if (WIFSIGNALED(status))
 		return (WTERMSIG(status));
 	return (status);
+}
+
+int	cmd_lstsize(t_cmd *start)
+{
+	int	i;
+
+	i = 0;
+	while (start)
+	{
+		i++;
+		start = start->next;
+	}
+	return (i);
 }

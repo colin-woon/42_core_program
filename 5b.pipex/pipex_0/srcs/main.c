@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:08:08 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:51:22 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/20 13:21:57 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_info	*init_info(int ac, char **av, char **envp)
 	if (!info->cmd)
 		return (clean_up(info), NULL);
 	info->cmd_start = info->cmd;
-	info->cmd_nb = ft_lstsize((t_list *)info->cmd_start);
+	info->cmd_nb = cmd_lstsize(info->cmd_start);
 	return (info);
 }
 
