@@ -11,8 +11,8 @@
 
 # Compiler and flags
 CC		=	gcc
-TEMP	= -Werror
-CFLAGS	=	-Wall -Wextra
+TEMP	=
+CFLAGS	=	-Wall -Werror -Wextra
 DEBUG	=	-g3 -fsanitize=address 
 RM		=	rm -rf
 
