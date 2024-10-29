@@ -6,21 +6,28 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:52:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/25 14:32:18 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:47:01 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main()
+int main(int ac, char **av)
 {
-	void *mlx_con;
-	void *mlx_window;
+	t_data	data;
 
-	mlx_con = mlx_init();
-	mlx_window = mlx_new_window(mlx_con, 500, 500, "testing window");
-
-	ft_printf("%d", ft_strlen("hello"));
-	mlx_pixel_put(mlx_con, mlx_window, 250, 250, 0x00ff00);
-	mlx_loop(mlx_con);
+	if (ac != 2)
+	{
+		ft_putendl_fd("Correct args: ./fdf <MAPFILE>", 2);
+		return (ARG_ERROR);
+	}
+	if (parse_file(&data, av[1]) == -1)
+		return (FILE_ERROR);
+	generate_map(&data);
+	generate_iso_pov(data.map);
+	// autoscale(data.map);
+	// data.animate_on = 0;
+	// if (start_mlx(&data) == -1)
+	// 	return (MLX_ERROR);
+	// return (0);
 }
