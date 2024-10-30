@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:23:55 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 15:34:49 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:17:32 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,3 +167,10 @@ int	close_window(t_data *data);
 // Hooks Mandatory
 int	loop_hook(t_data *data);
 int	key_hook1(int keysym, t_data *data);
+
+// debug
+void print_img(t_img *img);
+void print_pt(t_pt *pt);
+void print_map(t_map *map);
+void print_data(t_data *data);
+void print_matrix3x3(t_matrix3x3 *matrix);

@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:38:46 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/11 21:29:48 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 15:59:52 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 # include <stdint.h>
 // # include <stdio.h>
 # include "ft_printf.h"
-# include "get_next_line.h"
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2048
+# endif
 typedef struct s_list
 {
 	void			*content;
@@ -80,5 +82,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// GNL
+char	*get_next_line(int fd);
 
 #endif

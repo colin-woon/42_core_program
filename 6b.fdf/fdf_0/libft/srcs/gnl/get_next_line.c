@@ -6,74 +6,103 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:26:11 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/11 21:26:52 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:00:12 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*init(char **line, char buf[], int *eof)
+static void	free_and_set_null(char **ptr)
 {
-	buf[BUFFER_SIZE] = '\0';
-	*eof = 1;
-	*line = malloc(sizeof(char));
-	if (!*line)
-		return (NULL);
-	**line = '\0';
-	return (*line);
-}
-
-void	clr_buf(char buf[], int j, char val)
-{
-	int	i;
-
-	if (j < 0)
-		j = BUFFER_SIZE - 1;
-	i = 0;
-	while (buf[i] && i <= j)
-		buf[i++] = val;
-}
-
-char	*finall(char *line, char buf[], int eof)
-{
-	if (eof == 0)
-		return (line);
-	if (eof < 0 || !strle(line))
+	if (ptr != NULL)
 	{
-		free(line);
-		return (NULL);
+		free(*ptr);
+		*ptr = NULL;
 	}
+}
+
+static ssize_t	read_from_fd(int fd, char **extra_chars)
+{
+	ssize_t		n;
+	char		*buf;
+	char		*tmp;
+
+	n = 1;
+	while (n > 0 && !ft_strchr(*extra_chars, '\n'))
+	{
+		buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+		if (buf == NULL)
+			return (-1);
+		n = read(fd, buf, BUFFER_SIZE);
+		if (n == -1 || (n == 0 && (*extra_chars == NULL)))
+		{
+			free_and_set_null(extra_chars);
+			free_and_set_null(&buf);
+			return (-1);
+		}
+		buf[n] = '\0';
+		tmp = ft_strdup(*extra_chars);
+		free_and_set_null(extra_chars);
+		*extra_chars = ft_strjoin(tmp, buf);
+		free_and_set_null(&tmp);
+		free_and_set_null(&buf);
+	}
+	return (n);
+}
+
+static char	*get_current_line(char **extra_chars, ssize_t *i)
+{
+	ssize_t		len;
+	char		*line;
+
+	*i = 0;
+	while ((*extra_chars)[*i] != '\n' && (*extra_chars)[*i] != '\0')
+		(*i)++;
+	if ((*extra_chars)[*i] == '\n')
+		(*i)++;
+	line = (char *)malloc((*i + 1) * sizeof(char));
+	if (!line)
+		return (NULL);
+	len = 0;
+	while (len < *i)
+	{
+		line[len] = (*extra_chars)[len];
+		len++;
+	}	
+	line[len] = '\0';
+	return (line);
+}
+
+static void	save_extra_char(char **extra_chars, ssize_t *i)
+{
+	char		*tmp;
+
+	if ((*extra_chars)[*i - 1] == '\0')
+		tmp = ft_strdup(*extra_chars + *i - 1);
 	else
-	{
-		clr_buf(buf, -1, '\0');
-		return (line);
-	}
+		tmp = ft_strdup(*extra_chars + *i);
+	free_and_set_null(extra_chars);
+	*extra_chars = ft_strdup(tmp);
+	free_and_set_null(&tmp);
 }
 
 char	*get_next_line(int fd)
 {
-	static char		buf[BUFFER_SIZE + 1];
-	char			*line;
-	int				j;
-	int				eof;
+	ssize_t		i;
+	static char	*extra_chars = NULL;
+	char		*line;
 
-	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || !init(&line, buf, &eof))
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (eof > 0)
+	line = NULL;
+	if (read_from_fd(fd, &extra_chars) == -1)
+		return (NULL);
+	if (extra_chars[0] == '\0')
 	{
-		j = idx_of(buf, '\n');
-		if (j != -1)
-		{
-			line = strj(line, subs(buf, itrig(buf), j + 1 - itrig(buf)));
-			clr_buf(buf, j, TRIG);
-			return (line);
-		}
-		line = strj(line, subs(buf, itrig(buf), strle(buf) - itrig(buf)));
-		if (!line)
-			return (NULL);
-		clr_buf(buf, -1, '\0');
-		eof = read(fd, buf, BUFFER_SIZE);
+		free_and_set_null(&extra_chars);
+		return (NULL);
 	}
-	return (finall(line, buf, eof));
+	line = get_current_line(&extra_chars, &i);
+	save_extra_char(&extra_chars, &i);
+	return (line);
 }

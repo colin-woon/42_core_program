@@ -6,7 +6,7 @@
 #    By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 14:26:32 by cwoon             #+#    #+#              #
-#    Updated: 2024/10/11 21:28:53 by cwoon            ###   ########.fr        #
+#    Updated: 2024/10/30 15:57:23 by cwoon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,8 +73,7 @@ FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_print_char.c \
 					$(SRC_DIR)ft_printf/ft_print_unsigned_nbr.c \
 					$(SRC_DIR)ft_printf/ft_printf.c
 
-GNL_DIR			=	$(SRC_DIR)gnl/get_next_line_utils.c \
-					$(SRC_DIR)gnl/get_next_line.c
+GNL_DIR			=	$(SRC_DIR)gnl/get_next_line.c
 
 # Concatenate all source files
 SRC 			=	$(FTIS_DIR) \

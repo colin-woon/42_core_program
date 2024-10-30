@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:06:53 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:05:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,19 @@ The returned pointer must be passed to free to avoid a memory leak.
  */
 char	*ft_strdup(const char *s)
 {
-	int		i;
-	int		j;
-	char	*str;
+	char	*dup;
+	size_t	size;
 
-	i = 0;
-	j = ft_strlen(s);
-	str = (char *)malloc(sizeof(*str) * (j + 1));
-	if (str == 0)
-		return (NULL);
-	while (i < j)
+	if (s == NULL)
 	{
-		str[i] = s[i];
-		i++;
+		dup = (char *)malloc(sizeof (char));
+		dup[0] = '\0';
+		return (dup);
 	}
-	str[i] = '\0';
-	return (str);
+	size = (ft_strlen(s) + 1) * sizeof(char);
+	dup = (char *)malloc(size);
+	if (!dup)
+		return (NULL);
+	ft_memmove(dup, s, size);
+	return (dup);
 }

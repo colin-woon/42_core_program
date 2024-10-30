@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:15:30 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/29 16:14:52 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:06:31 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	start_mlx(t_data *data)
 	data->img.buffer = mlx_new_image(data->mlx_ptr, D_WIDTH, D_HEIGHT);
 	data->img.address = mlx_get_data_addr(data->img.buffer, \
 			&data->img.bits_p_pixel, &data->img.line_len, &data->img.endian);
-	// mlx_loop_hook(data->mlx_ptr, loop_hook, data);
+	mlx_loop_hook(data->mlx_ptr, loop_hook, data);
 	mlx_hook(data->window_ptr, DestroyNotify, 0, close_window, data);
-	// mlx_hook(data->window_ptr, KeyPress, 1, key_hook1, data);
+	mlx_hook(data->window_ptr, KeyPress, 1, key_hook1, data);
 	mlx_do_key_autorepeaton(data->mlx_ptr);
 	mlx_loop(data->mlx_ptr);
 	return (0);

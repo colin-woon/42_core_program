@@ -12,7 +12,7 @@
 # Compiler and flags
 CC		=	gcc
 TEMP	=
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra $(DEBUG)
 DEBUG	=	-g3 -fsanitize=address 
 RM		=	rm -rf
 
@@ -47,7 +47,8 @@ SRCS_FILES		=	srcs/lines.c \
 					srcs/utils_math.c \
 					srcs/utils_parser.c \
 					srcs/utils.view.c \
-					srcs/view.c
+					srcs/view.c \ 
+					srcs/debug.c
 					
 OBJS_FILES		=	$(patsubst %.c, $(OBJS_DIR)%.o, $(SRCS_FILES))
 

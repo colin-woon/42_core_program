@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 10:55:42 by cwoon             #+#    #+#             */
-/*   Updated: 2024/08/29 17:27:14 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 16:03:32 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ RETURN VALUES
  */
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	i;
-	char			cc;
+	size_t	i;
 
-	cc = (char) c;
+	if (s == NULL)
+		return (NULL);
 	i = 0;
-	while (s[i])
+	while (s[i] && (s[i] != (char)c))
 	{
-		if (s[i] == cc)
-			return ((char *) &s[i]);
 		i++;
 	}
-	if (s[i] == cc)
-		return ((char *) &s[i]);
-	return (NULL);
+	if ((char)c == 0)
+		return ((char *)s + i);
+	if (!s[i])
+		return (NULL);
+	return ((char *)s + i);
 }
