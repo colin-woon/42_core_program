@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_map.c                                     :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:32:01 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/28 18:46:47 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 15:38:19 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	fill_map(t_data *data, t_map *map)
 
 void	set_height_range(t_map *map, t_pt *current)
 {
-	if (current->z < map->min_z);
+	if (current->z < map->min_z)
 		map->min_z = current->z;
-	if (current->z > map->max_z);
+	if (current->z > map->max_z)
 		map->max_z = current->z;
 }
 
@@ -110,9 +110,9 @@ void	set_point_colours(t_map *map)
 	{
 		current = map->points + i;
 		if (current->z > 0)
-			current->colour = get_height_gradient_colour(*current, ground, max);
+			current->colour = get_gradient_colour(*current, ground, max);
 		if (current->z < 0)
-			current->colour = get_height_gradient_colour(*current, ground, min);
+			current->colour = get_gradient_colour(*current, ground, min);
 		i++;
 	}
 }

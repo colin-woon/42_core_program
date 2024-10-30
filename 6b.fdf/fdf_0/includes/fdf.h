@@ -6,22 +6,25 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:23:55 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/28 18:46:39 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 15:34:49 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "mlx.h"
-#include <math.h>
-#include <fcntl.h>
+# include "libft.h"
+# include "mlx.h"
+# include <math.h>
+# include <fcntl.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+
 
 #define ARG_ERROR -1
 #define MALLOC_ERROR 1
 #define FILE_ERROR -1
 #define MLX_ERROR -1
 
-# define WIN_W	1280
-# define WIN_H	720
+# define D_WIDTH	1280
+# define D_HEIGHT	720
 # define RED	0x00FF0000
 # define DRED	0x00660000
 # define GREEN	0x0000FF00
@@ -36,7 +39,8 @@
 # define GROUND_COLOUR	RED
 # define HIGH_COLOUR	PURPLE
 # define LOW_COLOUR		DBLUE
-// # define ISO	0.6154
+# define ISO	0.81647
+# define MARGIN	100
 
 typedef struct s_img
 {
@@ -92,15 +96,37 @@ typedef struct s_data
 	t_map	*origin_map;
 }	t_data;
 
+typedef struct s_matrix3x3
+{
+	float_t	c1r1;
+	float_t	c1r2;
+	float_t	c1r3;
+	float_t	c2r1;
+	float_t	c2r2;
+	float_t	c2r3;
+	float_t	c3r1;
+	float_t	c3r2;
+	float_t	c3r3;
+}	t_matrix3x3;
+
 // Utils Colour
-int		get_height_gradient_colour(t_pt cur, t_pt start, t_pt end);
+int		get_gradient_colour(t_pt cur, t_pt start, t_pt end);
 float_t	get_percentage(int start, int end, int cur);
 int		get_colour_channel(int start, int end, float_t percentage);
+int		get_pixel_colour(t_pt cur, t_pt start, t_pt end, t_pt delta);
 
 // Utils Parser
 void	newline_to_space(unsigned int i, char *s);
 int		is_map_valid(int new_columns, t_data *previous);
 void	append_line_to_file(char **line, char **file);
+
+// Utils Math
+t_pt	matrix_calc(t_matrix3x3 mat, t_pt pt);
+t_pt	add_vector(t_pt pt1, t_pt pt2);
+t_pt	subtract_vector(t_pt pt1, t_pt pt2);
+
+// Utils View
+void	get_xy_limits(t_map *map);
 
 // Parser
 int		parse_file(t_data *data, char *filename);
@@ -114,3 +140,30 @@ void	set_height_range(t_map *map, t_pt *current);
 void	set_point_colours(t_map *map);
 t_map	*save_original_map(t_data *data);
 
+// View
+void	generate_iso_view(t_map *map);
+t_map	*transform_map(t_map *map, t_matrix3x3 mat);
+void	autoscale(t_map *map);
+void	zoom(t_map *map, float_t factor);
+
+// Rotation
+void	rotate_x(t_map *map, float_t angle);
+void	rotate_y(t_map *map, float_t angle);
+
+// Rendering
+void	render_background(t_img *img, int colour);
+void	draw_map(t_img *img, t_map *map, t_pt offset);
+void	img_pix_put(t_img *img, t_pt pt);
+
+// Lines
+int	draw_line(t_img *img, t_pt start, t_pt end);
+int	draw_line_low(t_img *img, t_pt start, t_pt end);
+int	draw_line_high(t_img *img, t_pt start, t_pt end);
+
+// MLX
+int	start_mlx(t_data *data);
+int	close_window(t_data *data);
+
+// Hooks Mandatory
+int	loop_hook(t_data *data);
+int	key_hook1(int keysym, t_data *data);

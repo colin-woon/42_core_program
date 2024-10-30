@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:51:06 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/28 15:34:35 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 15:38:42 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	count_columns(char *line)
 {
 	int		no_of_columns;
 	char	**split_line;
-	char	line_dup;
+	char	*line_dup;
 
 	line_dup = ft_strdup(line);
 	no_of_columns = 0;

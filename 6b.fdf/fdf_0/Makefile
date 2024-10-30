@@ -17,7 +17,7 @@ DEBUG	=	-g3 -fsanitize=address
 RM		=	rm -rf
 
 # Output file name
-NAME	=	test_mlx
+NAME	=	fdf
 
 # Directories
 LIBFT_DIR		=	libft
@@ -34,7 +34,20 @@ MLX_FLAGS		=	-L$(MLX_DIR) -lmlx_Linux
 LIBS			=	$(MLX_FLAGS) $(LIBFT_FLAGS)
 1X_FLAGS		=	-lXext -lX11 -lm -lz
 
-SRCS_FILES		=	srcs/main.c
+SRCS_FILES		=	srcs/lines.c \
+					srcs/main.c \
+					srcs/map.c \
+					srcs/mlx_hooks_bonus.c \
+					srcs/mlx_hooks_mandatory.c \
+					srcs/mlx.c \
+					srcs/parser.c \
+					srcs/render.c \
+					srcs/rotation.c \
+					srcs/utils_colour.c \
+					srcs/utils_math.c \
+					srcs/utils_parser.c \
+					srcs/utils.view.c \
+					srcs/view.c
 					
 OBJS_FILES		=	$(patsubst %.c, $(OBJS_DIR)%.o, $(SRCS_FILES))
 

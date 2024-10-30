@@ -6,18 +6,19 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:49:26 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/28 18:37:23 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 15:30:21 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		get_height_gradient_colour(t_pt cur, t_pt start, t_pt end);
+int		get_gradient_colour(t_pt cur, t_pt start, t_pt end);
 float_t	get_percentage(int start, int end, int cur);
 int		get_colour_channel(int start, int end, float_t percentage);
+int		get_pixel_colour(t_pt cur, t_pt start, t_pt end, t_pt delta);
 
 // Using Linear Interpolation (need to research)
-int	get_height_gradient_colour(t_pt cur, t_pt start, t_pt end)
+int	get_gradient_colour(t_pt cur, t_pt start, t_pt end)
 {
 	int		red;
 	int		green;
@@ -52,4 +53,25 @@ int	get_colour_channel(int start, int end, float_t percentage)
 
 	colour_channel = (1 - percentage) * start + percentage * end;
 	return (colour_channel);
+}
+
+int	get_pixel_colour(t_pt cur, t_pt start, t_pt end, t_pt delta)
+{
+	int		red;
+	int		green;
+	int		blue;
+	float_t	percentage;
+
+	if(cur.colour == end.colour)
+		return (cur.colour);
+	if (delta.x > delta.y)
+		percentage = get_percentage(start.x, end.x, cur.x);
+	else
+		percentage = get_percentage(start.y, end.y, cur.y);
+	red = get_colour_channel((start.colour >> 16) & 0xFF, \
+			(end.colour >> 16) & 0xFF, percentage);
+	green = get_colour_channel((start.colour >> 8) & 0xFF, \
+			(end.colour >> 8) & 0xFF, percentage);
+	blue = get_colour_channel(start.colour & 0xFF, end.colour & 0xFF, percentage);
+	return ((red << 16) | (green << 8) | (blue));
 }

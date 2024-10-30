@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.view.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 13:52:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/29 15:15:08 by cwoon            ###   ########.fr       */
+/*   Created: 2024/10/29 14:40:47 by cwoon             #+#    #+#             */
+/*   Updated: 2024/10/29 15:12:02 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main(int ac, char **av)
-{
-	t_data	data;
+void	get_xy_limits(t_map *map);
 
-	if (ac != 2)
+void	get_xy_limits(t_map *map)
+{
+	t_pt	*current;
+	int		i;
+
+	i = 0;
+	while (i < map->width * map->height)
 	{
-		ft_putendl_fd("Correct args: ./fdf <MAPFILE>", 2);
-		return (ARG_ERROR);
+		current = map->points + i;
+		if (current->x < map->min_x)
+			map->min_x = current->x;
+		if (current->x > map->max_x)
+			map->max_x = current->x;
+		if (current->y < map->min_y)
+			map->min_y = current->y;
+		if (current->y > map->max_y)
+			map->max_y = current->y;
+		i++;
 	}
-	if (parse_file(&data, av[1]) == -1)
-		return (FILE_ERROR);
-	generate_map(&data);
-	generate_iso_view(data.map);
-	autoscale(data.map);
-	data.animate_on = 0;
-	if (start_mlx(&data) == -1)
-		return (MLX_ERROR);
-	return (0);
 }
+
+
