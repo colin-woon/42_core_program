@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:23:55 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 16:17:32 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 17:14:43 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 # define GROUND_COLOUR	RED
 # define HIGH_COLOUR	PURPLE
 # define LOW_COLOUR		DBLUE
-# define ISO	0.81647
-# define MARGIN	100
+# define ISO	0.6154
+# define MARGIN	30
 
 typedef struct s_img
 {

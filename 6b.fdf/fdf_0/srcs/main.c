@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:52:54 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 16:20:04 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 17:38:03 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ int main(int ac, char **av)
 	generate_iso_view(data.map);
 	autoscale(data.map);
 	data.animate_on = 0;
-	print_img(&data.img);
-	print_pt(&data.map->points);
-	print_map(&data.map);
+	print_map(data.map);
+	// print_img(&data.img);
+	print_pt(data.map->points);
 	print_data(&data);
-	// print_matrix3x3(matrix);
 	if (start_mlx(&data) == -1)
 		return (MLX_ERROR);
 	return (0);

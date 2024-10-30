@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:46:36 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 15:38:06 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/30 18:00:31 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ int	draw_line_high(t_img *img, t_pt start, t_pt end)
 	delta.x = fabsf(delta.x);
 	error_term = 2 * delta.x - delta.y;
 	current = start;
-	while (current.x++ < end.x)
+	while (current.y++ < end.y)
 	{
 		img_pix_put(img, current);
 		if (error_term > 0)
 		{
-			current.y += x_direction;
+			current.x += x_direction;
 			error_term += 2 * (delta.x - delta.y);
 		}
 		else
