@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 14:25:53 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/31 17:26:22 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 16:35:20 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	open_files(t_files *files)
 		files->in_fd = open("/tmp/.here_doc.txt", O_RDONLY);
 	}
 }
+
 /* 
 Launch heredoc to receive input from user, 
 then stores it in the created file earlier

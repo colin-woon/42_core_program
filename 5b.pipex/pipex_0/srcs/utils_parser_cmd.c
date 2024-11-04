@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 22:36:21 by cwoon             #+#    #+#             */
-/*   Updated: 2024/11/04 13:46:37 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 16:35:35 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	set_cmd_infos(t_cmd **start, t_list *path)
 	}
 	return (0);
 }
+
 /* 
 Loops through all PATH in the env to 
 find the accessible absolute path for the command

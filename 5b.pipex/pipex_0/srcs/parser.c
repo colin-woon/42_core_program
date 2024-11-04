@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 18:10:56 by cwoon             #+#    #+#             */
-/*   Updated: 2024/11/04 13:42:25 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 16:33:59 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ t_files	*parse_files(int ac, char **av)
 	open_files(files);
 	return (files);
 }
+
 /* 
 Loop condition checks file2 param & after it.
 Parses the commands into a linked list

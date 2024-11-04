@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:08:08 by cwoon             #+#    #+#             */
-/*   Updated: 2024/11/04 15:56:44 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 16:34:13 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_info	*init_info(int ac, char **av, char **envp)
 	info->total_cmd = cmd_lstsize(info->cmd_start);
 	return (info);
 }
+
 /* 
 Child Process (pid = 0): Focuses on execution, execve is indirectly
 the I/O blocking feature, the command will wait for STDIN for input
@@ -81,16 +82,10 @@ void	run_pipex(t_info *info, char **envp)
 		{
 			if (!info->cmd->next)
 				info->last_pid = pid;
-			if (info->cmd->index == 1)
+			if (info->cmd->index > 0)
 				close(info->pipefd[info->cmd->index - 1][WRITE_END]);
-			else if (info->cmd->index != 0)
-			{
+			if (info->cmd->index > 1)
 				close(info->pipefd[info->cmd->index - 2][READ_END]);
-				close(info->pipefd[info->cmd->index - 1][WRITE_END]);
-			}
-			// close(info->pipefd[info->cmd->index - 1][WRITE_END]);
-			// if (info->cmd->index > 1)
-			// 	close(info->pipefd[info->cmd->index - 2][READ_END]);
 		}
 		info->cmd = info->cmd->next;
 	}
