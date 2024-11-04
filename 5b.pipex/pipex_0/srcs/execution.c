@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:24:06 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:44:12 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:01:10 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	execute_cmd(t_info *info, char **envp)
 		clean_up(info);
 		exit(EXIT_FAILURE);
 	}
-	close_pipefd(info->cmd_nb, info->pipefd);
+	close_pipefd(info->total_cmd, info->pipefd);
 	close_files(info->files);
 	if (execve(info->cmd->path, info->cmd->flags, envp) == -1)
 	{

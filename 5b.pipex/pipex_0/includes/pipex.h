@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:09:40 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/20 13:21:28 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:01:10 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_info
 	t_cmd	*cmd;
 	t_cmd	*cmd_start;
 	int		**pipefd;
-	int		cmd_nb;
+	int		total_cmd;
 	pid_t	last_pid;
 	int		exit_code;
 }	t_info;
@@ -84,7 +84,7 @@ int		cmd_lstsize(t_cmd *start);
 // Utils Free
 void	clean_up(t_info *info);
 void	close_files(t_files *files);
-void	close_pipefd(int cmd_nb, int **pipefd);
+void	close_pipefd(int total_cmd, int **pipefd);
 
 // Utils cmd_lst
 void	cmd_lstclear(t_cmd **start, void (*del)(void *));
@@ -109,7 +109,7 @@ void	dup_last_cmd(t_info *info);
 // Utils Parser Args
 int		get_quote_count(char *av, char c);
 char	*parse_spaces(char *str);
-char	*parse_single_quotes(char *str);
+char	*parse_quotes_n_escape(char *str);
 
 // Utils Parser Path
 t_list	*get_path_list(char **all_paths, t_info *info);

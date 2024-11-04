@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:09:21 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 23:18:04 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/31 15:52:32 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 int		get_quote_count(char *av, char c);
 char	*parse_spaces(char *str);
-char	*parse_single_quotes(char *str);
+char	*parse_quotes_n_escape(char *str);
 
-char	*parse_single_quotes(char *str)
+/* 
+Parses three conditions:
+- wc\ -l
+- 'wc -l'
+- file\'that\'uses\'this\' (stupid af)
+ */
+char	*parse_quotes_n_escape(char *str)
 {
 	int		i;
 	int		j;
@@ -27,22 +33,26 @@ char	*parse_single_quotes(char *str)
 	i = -1;
 	j = 0;
 	quote = '\'';
-	backslash = '\\';
+	backslash = 92;
 	new_str = str;
 	while (str[++i])
 	{
-		if (str[i] != quote && str[i] != backslash)
-			new_str[j++] = str[i];
-		else if (str[i] == backslash \
-		&& str[i + 1] != quote && str[i + 1] != ' ')
-			new_str[j++] = str[i];
-		else if (i > 0 && str[i] == quote && str[i - 1] == backslash)
+		if ((str[i] != quote && str[i] != backslash) || \
+		(str[i] == backslash && str[i + 1] != quote && str[i + 1] != ' ') || \
+		(i > 0 && str[i] == quote && str[i - 1] == backslash))
 			new_str[j++] = str[i];
 	}
 	new_str[j] = '\0';
 	return (new_str);
 }
 
+/*	
+ASCII value
+39 = '(single quote)
+92 = \(backslash)
+
+This replaces spaces with -1 for later parsing
+ */
 char	*parse_spaces(char *str)
 {
 	int			in_quote;
@@ -56,7 +66,7 @@ char	*parse_spaces(char *str)
 			in_quote = 1;
 		else if (in_quote && str[i] == 39)
 			in_quote = 0;
-		else if (!in_quote && str[i] == 92 && str [i + 1] == ' ')
+		else if (!in_quote && str[i] == 92)
 			i++;
 		else if (!in_quote && str[i] == ' ')
 			str[i] = FLAG_SPACE;

@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:08:08 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/20 13:21:57 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:56:44 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_info	*init_info(int ac, char **av, char **envp)
 	if (!info)
 		return (NULL);
 	info->exit_code = 0;
-	info->cmd_nb = 0;
+	info->total_cmd = 0;
 	info->cmd_start = NULL;
 	info->pipefd = NULL;
 	info->path = parse_path(envp, info);
@@ -58,10 +58,14 @@ t_info	*init_info(int ac, char **av, char **envp)
 	if (!info->cmd)
 		return (clean_up(info), NULL);
 	info->cmd_start = info->cmd;
-	info->cmd_nb = cmd_lstsize(info->cmd_start);
+	info->total_cmd = cmd_lstsize(info->cmd_start);
 	return (info);
 }
-
+/* 
+Child Process (pid = 0): Focuses on execution, execve is indirectly
+the I/O blocking feature, the command will wait for STDIN for input
+Parent Process (pid >0): Focuses on closing pipes and incrementing
+ */
 void	run_pipex(t_info *info, char **envp)
 {
 	pid_t	pid;
@@ -70,7 +74,7 @@ void	run_pipex(t_info *info, char **envp)
 	{
 		pid = fork();
 		if (pid == -1)
-			perror("fork");
+			perror("Fork error");
 		if (pid == 0)
 			execute_cmd(info, envp);
 		if (pid > 0)
@@ -78,16 +82,19 @@ void	run_pipex(t_info *info, char **envp)
 			if (!info->cmd->next)
 				info->last_pid = pid;
 			if (info->cmd->index == 1)
-				close(info->pipefd[info->cmd->index -1][WRITE_END]);
+				close(info->pipefd[info->cmd->index - 1][WRITE_END]);
 			else if (info->cmd->index != 0)
 			{
 				close(info->pipefd[info->cmd->index - 2][READ_END]);
 				close(info->pipefd[info->cmd->index - 1][WRITE_END]);
 			}
+			// close(info->pipefd[info->cmd->index - 1][WRITE_END]);
+			// if (info->cmd->index > 1)
+			// 	close(info->pipefd[info->cmd->index - 2][READ_END]);
 		}
 		info->cmd = info->cmd->next;
 	}
-	close(info->pipefd[info->cmd_nb - 2][READ_END]);
+	close(info->pipefd[info->total_cmd - 2][READ_END]);
 	wait_cmds(info);
 }
 

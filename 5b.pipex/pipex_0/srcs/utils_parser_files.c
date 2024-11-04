@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 14:25:53 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:47:15 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/10/31 17:26:22 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void	open_files(t_files *files);
 void	launch_here_doc(t_files *files);
 
+/* 
+- 0644 necessary to specify as CREATE is used, grants READ & WRITE 
+- No difference between doing infile or outfile logic first
+Mandatory: Open and save infile FD & outfile FD
+Bonus: SAME but also launches here_doc
+*/
 void	open_files(t_files *files)
 {
 	files->out_fd = -1;
@@ -40,7 +46,11 @@ void	open_files(t_files *files)
 		files->in_fd = open("/tmp/.here_doc.txt", O_RDONLY);
 	}
 }
-
+/* 
+Launch heredoc to receive input from user, 
+then stores it in the created file earlier
+(.here_doc.txt)
+ */
 void	launch_here_doc(t_files *files)
 {
 	char	*line;
@@ -55,8 +65,6 @@ void	launch_here_doc(t_files *files)
 		line = get_next_line(0);
 		if (line == NULL)
 			return (free(data));
-		if (*line == 0)
-			break ;
 		if (!ft_strncmp(line, files->limiter, ft_strlen(files->limiter)))
 		{
 			if (ft_strlen(line) == ft_strlen(files->limiter) + 1)

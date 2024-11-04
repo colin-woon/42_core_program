@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 19:50:55 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:46:54 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 13:21:28 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,13 @@ t_cmd	*cmd_lstnew(char **split_cmd, int index)
 	return (new_cmd);
 }
 
-// Start is a pointer to a linked list, be aware
+/* 
+Start is a pointer to a linked list, be aware
+start = checks the existence of the linked list pointer
+*start = checks the existence of the node
+
+ptr is used for appending, but final return value is original
+ */
 t_cmd	*cmd_lstappend(t_cmd **start, t_cmd *new_cmd)
 {
 	t_cmd	*ptr;

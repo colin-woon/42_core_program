@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 22:36:21 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 21:48:30 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 13:46:37 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 int		set_cmd_infos(t_cmd **start, t_list *path);
 void	get_cmd_path(t_cmd *cmd, t_list *path);
 
+/* 
+Deals with absolute path commands
+- instantly checks accessibility
+- saves it as a path itself
+
+For normal commands
+- checks command accessibility with the 2D array of parsed paths
+*/
 int	set_cmd_infos(t_cmd **start, t_list *path)
 {
 	t_cmd	*cmd_node;
@@ -42,7 +50,12 @@ int	set_cmd_infos(t_cmd **start, t_list *path)
 	}
 	return (0);
 }
+/* 
+Loops through all PATH in the env to 
+find the accessible absolute path for the command
 
+If found, sets the path and accessibility results
+ */
 void	get_cmd_path(t_cmd *cmd, t_list *path)
 {
 	char	*tmp_path;

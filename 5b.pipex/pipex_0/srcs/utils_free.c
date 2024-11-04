@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 19:43:01 by cwoon             #+#    #+#             */
-/*   Updated: 2024/09/19 19:51:02 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:01:10 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	clean_up(t_info *info);
 void	close_files(t_files *files);
-void	close_pipefd(int cmd_nb, int **pipefd);
+void	close_pipefd(int total_cmd, int **pipefd);
 
 void	clean_up(t_info *info)
 {
@@ -25,10 +25,10 @@ void	clean_up(t_info *info)
 			unlink("/tmp/.here_doc.txt");
 		free(info->files);
 	}
-	if (info->cmd_nb && info->pipefd)
+	if (info->total_cmd && info->pipefd)
 	{
-		close_pipefd(info->cmd_nb, info->pipefd);
-		ft_free_int_matrix(info->pipefd, info->cmd_nb);
+		close_pipefd(info->total_cmd, info->pipefd);
+		ft_free_int_matrix(info->pipefd, info->total_cmd);
 	}
 	if (info->path)
 		ft_lstclear(&(info->path), &free);
@@ -45,14 +45,14 @@ void	close_files(t_files *files)
 		close(files->out_fd);
 }
 
-void	close_pipefd(int cmd_nb, int **pipefd)
+void	close_pipefd(int total_cmd, int **pipefd)
 {
 	int	i;
 
-	if (!cmd_nb || !pipefd)
+	if (!total_cmd || !pipefd)
 		return ;
 	i = -1;
-	while (++i < cmd_nb - 1)
+	while (++i < total_cmd - 1)
 	{
 		close(pipefd[i][WRITE_END]);
 		close(pipefd[i][READ_END]);

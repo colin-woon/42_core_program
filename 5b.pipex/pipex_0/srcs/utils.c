@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:59:01 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/20 13:21:19 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:01:10 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ int	**get_pipefd(t_info *info)
 	int	i;
 	int	**pipefd;
 
-	pipefd = malloc((info->cmd_nb - 1) * sizeof(int *));
+	pipefd = malloc((info->total_cmd - 1) * sizeof(int *));
 	if (!pipefd)
 		return (NULL);
 	i = 0;
-	while (i < info->cmd_nb - 1)
+	while (i < info->total_cmd - 1)
 	{
 		pipefd[i] = malloc(2 * sizeof(int));
 		if (!pipefd[i] || pipe(pipefd[i]) == -1)
 		{
-			perror("Unable to get pipefd");
+			perror("Pipe error");
 			ft_free_int_matrix(pipefd, i + 1);
 			return (NULL);
 		}

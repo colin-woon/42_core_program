@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 18:10:56 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/19 22:04:14 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/04 13:42:25 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@ t_list	*parse_path(char **envp, t_info *info);
 t_files	*parse_files(int ac, char **av);
 t_cmd	*parse_cmd(char **av, t_info *info);
 
+/*	
+& - bitwise AND operation 
+easy way to check ODD or EVEN number
+eg:
+	quote_count = 5
+	Binary:       0101
+				&
+	Binary:       0001
+	Result:       0001 (true, odd)
+
+	quote_count = 4
+	Binary:       0100
+				&
+	Binary:       0001
+	Result:       0000 (false, even)
+*/
 char	**parse_args(int ac, char **av)
 {
 	int	i;
@@ -32,12 +48,15 @@ char	**parse_args(int ac, char **av)
 				error_handler(EXIT_FAILURE, \
 				"Error: Odd number of quotes", STDERR_FILENO);
 			av[i] = parse_spaces(av[i]);
-			av[i] = parse_single_quotes(av[i]);
+			av[i] = parse_quotes_n_escape(av[i]);
 		}
 	}
 	return (av);
 }
 
+/* 
+Parses PATH into a 2D array, then parse it again to a linked list of paths
+ */
 t_list	*parse_path(char **envp, t_info *info)
 {
 	t_list	*path;
@@ -63,6 +82,10 @@ t_list	*parse_path(char **envp, t_info *info)
 	return (path);
 }
 
+/* 
+Checks for here_doc(saves limiter too), and init files structure, 
+Checks accessibility before opening
+ */
 t_files	*parse_files(int ac, char **av)
 {
 	t_files	*files;
@@ -91,7 +114,11 @@ t_files	*parse_files(int ac, char **av)
 	open_files(files);
 	return (files);
 }
-
+/* 
+Loop condition checks file2 param & after it.
+Parses the commands into a linked list
+Each command saves its flags into a 2D array and index
+ */
 t_cmd	*parse_cmd(char **av, t_info *info)
 {
 	t_cmd	*start;
@@ -115,7 +142,7 @@ t_cmd	*parse_cmd(char **av, t_info *info)
 			return (cmd_lstclear(&start, &free), NULL);
 		start = cmd_lstappend(&start, cmd_node);
 	}
-	if (set_cmd_infos(&start, info->path) == -2)
+	if (set_cmd_infos(&start, info->path) == PATH_ERR)
 		return (NULL);
 	return (start);
 }
