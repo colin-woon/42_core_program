@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:49:26 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 15:30:21 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:54:33 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	get_gradient_colour(t_pt cur, t_pt start, t_pt end)
 			(end.colour >> 16) & 0xFF, percentage);
 	green = get_colour_channel((start.colour >> 8) & 0xFF, \
 			(end.colour >> 8) & 0xFF, percentage);
-	blue = get_colour_channel(start.colour & 0xFF, end.colour & 0xFF, percentage);
+	blue = get_colour_channel(start.colour & 0xFF, \
+			end.colour & 0xFF, percentage);
 	return ((red << 16) | (green << 8) | (blue));
 }
 
@@ -38,7 +39,7 @@ int	get_gradient_colour(t_pt cur, t_pt start, t_pt end)
 float_t	get_percentage(int start, int end, int cur)
 {
 	float_t	cur_position;
-	float_t diff;
+	float_t	diff;
 
 	diff = end - start;
 	if (diff == 0)
@@ -62,7 +63,7 @@ int	get_pixel_colour(t_pt cur, t_pt start, t_pt end, t_pt delta)
 	int		blue;
 	float_t	percentage;
 
-	if(cur.colour == end.colour)
+	if (cur.colour == end.colour)
 		return (cur.colour);
 	if (delta.x > delta.y)
 		percentage = get_percentage(start.x, end.x, cur.x);
@@ -72,6 +73,7 @@ int	get_pixel_colour(t_pt cur, t_pt start, t_pt end, t_pt delta)
 			(end.colour >> 16) & 0xFF, percentage);
 	green = get_colour_channel((start.colour >> 8) & 0xFF, \
 			(end.colour >> 8) & 0xFF, percentage);
-	blue = get_colour_channel(start.colour & 0xFF, end.colour & 0xFF, percentage);
+	blue = get_colour_channel(start.colour & 0xFF, \
+			end.colour & 0xFF, percentage);
 	return ((red << 16) | (green << 8) | (blue));
 }

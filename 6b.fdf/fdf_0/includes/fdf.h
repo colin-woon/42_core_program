@@ -6,41 +6,40 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 14:23:55 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 18:06:02 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:51:18 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
-# include "mlx.h"
-# include <math.h>
-# include <fcntl.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
-
+#include "libft.h"
+#include "mlx.h"
+#include <math.h>
+#include <fcntl.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
 
 #define ARG_ERROR -1
 #define MALLOC_ERROR 1
 #define FILE_ERROR -1
 #define MLX_ERROR -1
 
-# define D_WIDTH	1280
-# define D_HEIGHT	720
-# define RED	0x00FF0000
-# define DRED	0x00660000
-# define GREEN	0x0000FF00
-# define BLUE	0x000000FF
-# define DBLUE	0x00000066
-# define PURPLE	0x00B491C8
-# define WHITE	0x00FFFFFF
-# define DGREEN	0x00006600
-# define BLACK	0x00000000
-# define GREY	0x00888888
-# define DGREY	0x00333333
-# define GROUND_COLOUR	RED
-# define HIGH_COLOUR	PURPLE
-# define LOW_COLOUR		DBLUE
-# define ISO	0.8167
-# define MARGIN	100
+#define D_WIDTH	1280
+#define D_HEIGHT	720
+#define RED	0x00FF0000
+#define DRED	0x00660000
+#define GREEN	0x0000FF00
+#define BLUE	0x000000FF
+#define DBLUE	0x00000066
+#define PURPLE	0x00B491C8
+#define WHITE	0x00FFFFFF
+#define DGREEN	0x00006600
+#define BLACK	0x00000000
+#define GREY	0x00888888
+#define DGREY	0x00333333
+#define GROUND_COLOUR	RED
+#define HIGH_COLOUR	PURPLE
+#define LOW_COLOUR		DBLUE
+#define ISO	0.8167
+#define MARGIN	100
 
 typedef struct s_img
 {
@@ -50,8 +49,6 @@ typedef struct s_img
 	int		line_len;
 	int		endian;
 }	t_img;
-
-
 typedef struct s_pt
 {
 	float_t	x;
@@ -156,21 +153,21 @@ void	draw_map(t_img *img, t_map *map, t_pt offset);
 void	img_pix_put(t_img *img, t_pt pt);
 
 // Lines
-int	draw_line(t_img *img, t_pt start, t_pt end);
-int	draw_line_low(t_img *img, t_pt start, t_pt end);
-int	draw_line_high(t_img *img, t_pt start, t_pt end);
+int		draw_line(t_img *img, t_pt start, t_pt end);
+int		draw_line_low(t_img *img, t_pt start, t_pt end);
+int		draw_line_high(t_img *img, t_pt start, t_pt end);
 
 // MLX
-int	start_mlx(t_data *data);
-int	close_window(t_data *data);
+int		start_mlx(t_data *data);
+int		close_window(t_data *data);
 
 // Hooks Mandatory
-int	loop_hook(t_data *data);
-int	key_hook1(int keysym, t_data *data);
+int		loop_hook(t_data *data);
+int		key_hook1(int keysym, t_data *data);
 
 // debug
-void print_img(t_img *img);
-void print_pt(t_pt *pt);
-void print_map(t_map *map);
-void print_data(t_data *data);
-void print_matrix3x3(t_matrix3x3 *matrix);
+void	print_img(t_img *img);
+void	print_pt(t_pt *pt);
+void	print_map(t_map *map);
+void	print_data(t_data *data);
+void	print_matrix3x3(t_matrix3x3 *matrix);

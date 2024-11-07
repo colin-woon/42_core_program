@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 16:16:43 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 15:34:37 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:53:22 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	loop_hook(t_data *data)
 	render_background(&data->img, BLACK);
 	map = data->map;
 	offset.x = D_WIDTH / 2;
-	offset.y = D_HEIGHT /2;
+	offset.y = D_HEIGHT / 2;
 	offset.z = 0;
 	draw_map(&data->img, map, offset);
 	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, \

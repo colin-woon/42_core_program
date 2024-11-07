@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:16:59 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 17:17:26 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:57:21 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_map	*transform_map(t_map *map, t_matrix3x3 mat)
 void	autoscale(t_map *map)
 {
 	float_t	scale_x;
-	float_t scale_y;
+	float_t	scale_y;
 
 	map->min_x = 0;
 	map->max_x = 0;
@@ -66,7 +66,7 @@ void	autoscale(t_map *map)
 
 void	zoom(t_map *map, float_t factor)
 {
-	t_matrix3x3 scale;
+	t_matrix3x3	scale;
 
 	scale = (t_matrix3x3)
 	{

@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 21:26:11 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 16:00:12 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:49:43 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static char	*get_current_line(char **extra_chars, ssize_t *i)
 	{
 		line[len] = (*extra_chars)[len];
 		len++;
-	}	
+	}
 	line[len] = '\0';
 	return (line);
 }

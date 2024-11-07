@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:21:15 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/29 20:26:20 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:56:05 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rotate_y(t_map *map, float_t angle);
 
 void	rotate_x(t_map *map, float_t angle)
 {
-	t_matrix3x3 rot_x;
+	t_matrix3x3	rot_x;
 
 	rot_x = (t_matrix3x3)
 	{
@@ -30,7 +30,7 @@ void	rotate_x(t_map *map, float_t angle)
 
 void	rotate_y(t_map *map, float_t angle)
 {
-	t_matrix3x3 rot_y;
+	t_matrix3x3	rot_y;
 
 	rot_y = (t_matrix3x3)
 	{
@@ -40,5 +40,3 @@ void	rotate_y(t_map *map, float_t angle)
 	};
 	transform_map(map, rot_y);
 }
-
-

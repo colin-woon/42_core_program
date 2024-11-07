@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:15:30 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 17:37:45 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:56:37 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	start_mlx(t_data *data)
 	if (data->mlx_ptr == NULL)
 	{
 		ft_putendl_fd("Error: connection to X Server failed", 2);
-		return(MLX_ERROR);
+		return (MLX_ERROR);
 	}
 	data->window_ptr = mlx_new_window(data->mlx_ptr, D_WIDTH, D_HEIGHT, "FdF");
 	if (data->window_ptr == NULL)
 	{
 		ft_putendl_fd("Error: failed to create new window", 2);
-		return(MLX_ERROR);
+		return (MLX_ERROR);
 	}
 	data->img.buffer = mlx_new_image(data->mlx_ptr, D_WIDTH, D_HEIGHT);
 	data->img.address = mlx_get_data_addr(data->img.buffer, \
@@ -53,5 +53,5 @@ int	close_window(t_data *data)
 	free(data->mlx_ptr);
 	ft_free_2d_array(data->parsed_file);
 	exit(0);
-	return(0);
+	return (0);
 }

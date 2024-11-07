@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:22:23 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 17:50:19 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:52:48 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	img_pix_put(t_img *img, t_pt pt);
 
 void	render_background(t_img *img, int colour)
 {
-	int row;
-	int col;
+	int	row;
+	int	col;
 
 	row = 0;
-	while(row < D_HEIGHT)
+	while (row < D_HEIGHT)
 	{
 		col = 0;
 		while (col < D_WIDTH)
@@ -60,6 +60,7 @@ void	draw_map(t_img *img, t_map *map, t_pt offset)
 		i++;
 	}
 }
+
 /*
 Pixel seems to be assigned twice:
 pixel		= (locates the memory address of where the pixel should be placed)

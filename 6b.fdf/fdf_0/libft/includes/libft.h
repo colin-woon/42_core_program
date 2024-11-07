@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:38:46 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 15:59:52 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:49:31 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2048
 # endif
+
 typedef struct s_list
 {
 	void			*content;

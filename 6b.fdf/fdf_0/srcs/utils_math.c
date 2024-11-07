@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:30:18 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 14:14:37 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:53:30 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ t_pt	subtract_vector(t_pt pt1, t_pt pt2)
 	diff.colour = pt1.colour;
 	return (diff);
 }
-

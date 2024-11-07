@@ -6,7 +6,7 @@
 /*   By: cwoon <cwoon@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:51:06 by cwoon             #+#    #+#             */
-/*   Updated: 2024/10/30 16:20:27 by cwoon            ###   ########.fr       */
+/*   Updated: 2024/11/07 18:55:23 by cwoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	parse_file(t_data *data, char *filename)
 	}
 	data->map = malloc(sizeof(t_map));
 	if (data->map == NULL)
-		return(MALLOC_ERROR);
+		return (MALLOC_ERROR);
 	file = get_file(fd, data);
 	if (file == NULL)
 		return (FILE_ERROR);
@@ -84,7 +84,7 @@ int	count_columns(char *line)
 	ft_striteri(line_dup, newline_to_space);
 	split_line = ft_split(line_dup, ' ');
 	free(line_dup);
-	while(split_line[no_of_columns] != NULL)
+	while (split_line[no_of_columns] != NULL)
 		no_of_columns++;
 	ft_free_2d_array(split_line);
 	return (no_of_columns);
