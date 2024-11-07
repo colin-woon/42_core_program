@@ -1,2 +1,26 @@
 - **.git_checkout** - the actual .git configurations for my passed project, just rename to .git to see `git logs` for commit history
-- **.git_ignore** - used for temporarily ignoring git repo to sync between remote and local progress without using git submodule commands *(this is my own workflow, allows me to save a lot of space on my 42KL iMac without having many individual copies of project repositories for remote work, with this I only require 1 repository for all projects when I'm away from campus)*
+
+# My 42 Projects
+Contains submodules for each 42 project that I did  
+  
+
+## To clone all projects
+```
+git clone --recursive git@github.com:colin-woon/hackathons.git
+```
+
+## To clone specific projects
+```
+git clone git@github.com:colin-woon/hackathons.git
+git submodule update --init <file_directory>
+```
+```
+EXAMPLE:
+git submodule update --init epfence_devmatch2024/
+```
+
+### If you decide to clone all projects
+```
+git submodule update --init --recursive
+```
+
