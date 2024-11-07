@@ -16,3 +16,15 @@
 [submodule "3.2_fdf"]
 	path = 3.2_fdf
 	url = https://github.com/colin-woon/3.2_fdf.git
+[submodule "1.0_libft"]
+	path = 1.0_libft
+	url = https://github.com/colin-woon/1.0_libft.git
+[submodule "2.0_printf"]
+	path = 2.0_printf
+	url = https://github.com/colin-woon/2.0_printf.git
+[submodule "2.1_get_next_line"]
+	path = 2.1_get_next_line
+	url = https://github.com/colin-woon/2.1_get_next_line.git
+[submodule "3.0_push_swap"]
+	path = 3.0_push_swap
+	url = https://github.com/colin-woon/3.0_push_swap.git
