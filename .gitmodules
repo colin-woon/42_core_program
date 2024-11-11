@@ -1,30 +1,40 @@
 [submodule "0_libft"]
 	path = 0_libft
 	url = https://github.com/colin-woon/0_libft.git
+	branch = main
 [submodule "1_printf"]
 	path = 1_printf
 	url = https://github.com/colin-woon/1_printf.git
+	branch = main
 [submodule "2_get_next_line"]
 	path = 2_get_next_line
 	url = https://github.com/colin-woon/2_get_next_line.git
+	branch = main
 [submodule "3_push_swap"]
 	path = 3_push_swap
 	url = https://github.com/colin-woon/3_push_swap.git
+	branch = main
 [submodule "3.1_pipex"]
 	path = 3.1_pipex
 	url = https://github.com/colin-woon/3.1_pipex.git
+	branch = main
 [submodule "3.2_fdf"]
 	path = 3.2_fdf
 	url = https://github.com/colin-woon/3.2_fdf.git
+	branch = main
 [submodule "1.0_libft"]
 	path = 1.0_libft
 	url = https://github.com/colin-woon/1.0_libft.git
+	branch = main
 [submodule "2.0_printf"]
 	path = 2.0_printf
 	url = https://github.com/colin-woon/2.0_printf.git
+	branch = main
 [submodule "2.1_get_next_line"]
 	path = 2.1_get_next_line
 	url = https://github.com/colin-woon/2.1_get_next_line.git
+	branch = main
 [submodule "3.0_push_swap"]
 	path = 3.0_push_swap
 	url = https://github.com/colin-woon/3.0_push_swap.git
+	branch = main
