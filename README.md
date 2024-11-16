@@ -9,18 +9,22 @@ Contains submodules for each 42 project that I did
 git clone --recursive https://github.com/colin-woon/42_core_program.git
 ```
 
-## To clone specific projects
+## If you cloned without --recursive
 ```
 git clone https://github.com/colin-woon/42_core_program.git
-git submodule update --remote --merge <path/to/submodule>
-```
-```
-EXAMPLE:
-git submodule update --remote --merge epfence_devmatch2024/
 ```
 
-### If you decide to clone all projects
+### Changing all projects to the main branch
 ```
 git submodule update --remote --merge
 ```
 
+### Changing specific projects to the main branch
+```
+git submodule update --remote --merge <path/to/submodule>
+```
+
+### Add new submodule
+```
+git submodule add <repository_url> <submodule_path>
+```
