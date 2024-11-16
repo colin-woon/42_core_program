@@ -38,3 +38,7 @@
 	path = 3.0_push_swap
 	url = https://github.com/colin-woon/3.0_push_swap.git
 	branch = main
+[submodule "4.0_philosophers"]
+	path = 4.0_philosophers
+	url = git@github.com:colin-woon/4.0_philosophers.git
+	branch = main
