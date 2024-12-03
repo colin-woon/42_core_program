@@ -42,3 +42,7 @@
 	path = 4.0_philosophers
 	url = git@github.com:colin-woon/4.0_philosophers.git
 	branch = main
+[submodule "4.1_minishell"]
+	path = 4.1_minishell
+	url = git@github.com:colin-woon/4.1_minishell.git
+	branch = main
