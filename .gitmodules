@@ -46,3 +46,6 @@
 	path = 4.1_minishell
 	url = git@github.com:colin-woon/4.1_minishell.git
 	branch = main
+[submodule "cpp_modules"]
+	path = cpp_modules
+	url = git@github.com:colin-woon/cpp_modules.git
