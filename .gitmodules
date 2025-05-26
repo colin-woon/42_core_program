@@ -49,3 +49,7 @@
 [submodule "cpp_modules"]
 	path = cpp_modules
 	url = git@github.com:colin-woon/cpp_modules.git
+	branch = main
+[submodule "rush_01"]
+	path = rush_01
+	url = git@github.com:colin-woon/rush_01.git

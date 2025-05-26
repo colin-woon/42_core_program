@@ -6,35 +6,88 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/01 23:46:55 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/09/03 22:53:09 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILE='ft_itoa.c'
-ASSIGN='ft_itoa'
+FILE='microshell.c'
+ASSIGN='microshell/microshell.c'
 
-bash .system/auto_correc_main.sh $FILE $ASSIGN "16"
-if [ -e .system/grading/traceback ];then
-    mv .system/grading/traceback .
-	exit 1
+index=0
+
+if [ -e traceback ]
+then
+    rm traceback
 fi
 
-bash .system/auto_correc_main.sh $FILE $ASSIGN "13268"
-if [ -e .system/grading/traceback ];then
-    mv .system/grading/traceback .
-	exit 1
-fi
+cp .system/grading/test.sh rendu/
 
-bash .system/auto_correc_main.sh $FILE $ASSIGN "-13268"
-if [ -e .system/grading/traceback ];then
-    mv .system/grading/traceback .
-	exit 1
-fi
+cd .system/grading
+{
+	gcc -Wall -Wextra -Werror $FILE
+} &>/dev/null
+{
+cp a.out ../../rendu/a.out
+} &>/dev/null
 
-bash .system/auto_correc_main.sh $FILE $ASSIGN "0"
-if [ -e .system/grading/traceback ];then
-    mv .system/grading/traceback .
-	exit 1
-fi
+cd ../../rendu
+touch sourcexam
+touch finalexam
+sh test.sh &> sourcexam       #TESTING VRAI
+{
+rm a.out
+} &>/dev/null
+{
+gcc -Wall -Wextra -Werror $ASSIGN
+}  &>.dev
+sh test.sh &> finalexam        #TESTING STUD
+# {
+# }  &>/dev/null
 
-touch .system/grading/passed;
+
+
+DIFF=$(diff sourcexam finalexam)
+if [ "$DIFF" != "" ]
+then
+        echo "----------------8<-------------[ START TEST " >> traceback
+		if [ -e a.out ]
+		then
+        printf "        💻 ALL TESTS: \n\n$(cat ../.system/grading/test.sh)\n" >> traceback
+        printf "\n\n        🔎 YOUR OUTPUT:\n" >> traceback
+        cat finalexam >> traceback
+        printf "\n\n        🗝 EXPECTED OUTPUT:\n" >> traceback
+		cat sourcexam >> traceback
+		else
+		printf "        🔎 YOUR OUTPUT:\n" >> traceback
+        # cat finalexam >> traceback
+        printf "\n";
+        echo "$(cat .dev)" >> traceback
+        rm .dev
+		printf "\n        ❌ COMPILATION ERROR\n" >> traceback
+		fi
+        echo "----------------8<------------- END TEST ]" >> traceback
+		index=$((index+1))
+fi
+# exit
+{
+mv traceback ../traceback
+}	&>/dev/null
+
+rm finalexam
+{
+rm sourcexam
+rm a.out
+rm .dev
+} &>/dev/null
+rm test.sh
+
+cd ../.system/grading
+
+#mv .system/tester.sh .system/grading/tester.sh
+
+
+if [ $index -eq 0 ]
+then
+	echo "OK"
+	touch passed
+fi
