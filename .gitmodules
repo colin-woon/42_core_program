@@ -38,3 +38,7 @@
 	path = rush_01
 	url = git@github.com:colin-woon/rush_01.git
 	branch = main
+[submodule "5.1_cub3d"]
+	path = 5.1_cub3d
+	url = git@github.com:colin-woon/5.1_cub3d.git
+	branch = main
