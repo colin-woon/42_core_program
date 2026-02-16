@@ -42,3 +42,11 @@
 	path = 5.1_cub3d
 	url = git@github.com:colin-woon/5.1_cub3d.git
 	branch = main
+[submodule "6.0_webserv"]
+	path = 6.0_webserv
+	url = https://github.com/colin-woon/6.0_webserv.git
+	branch = main
+[submodule "6.1_inception"]
+	path = 6.1_inception
+	url = https://github.com/colin-woon/6.1_inception.git
+	branch = main
