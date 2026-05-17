@@ -50,3 +50,7 @@
 	path = 6.1_inception
 	url = https://github.com/colin-woon/6.1_inception.git
 	branch = main
+[submodule "7.0_ft_transcendence"]
+	path = 7.0_ft_transcendence
+	url = git@github.com:colin-woon/7.0_ft_transcendence.git
+	branch = main
